@@ -25,6 +25,4 @@
 
 ## Deployment
 
-From the Angular project directory, run:
-- Build: `npx ng build --prod --base-href "https://prendradjaja.github.io/friendlog-web/"`
-- Then replace the contents of the `gh-pages` branch with the contents of the `dist/friendlog-web/` directory and push.
+`./deploy.sh`
