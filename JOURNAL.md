@@ -21,4 +21,4 @@ Next (features):
 
 Next (infra):
 
-- [ ] One-button deploy
+- [x] Almost one-button deploy
