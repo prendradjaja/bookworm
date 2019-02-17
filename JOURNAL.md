@@ -17,7 +17,7 @@ now.
 
 Next (features):
 
-- ?
+- Integrate page mapper
 
 Next (infra):
 
