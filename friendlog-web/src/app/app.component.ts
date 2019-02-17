@@ -9,7 +9,6 @@ import { BackendService, Row } from './backend.service';
 export class AppComponent implements OnInit {
   rows: Row[] = [];
   newEntryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfrEoQFScVs_hleOQ9TU0-vev62_UK8mwYgEYOLC1sPwUK4dw/viewform';
-  newCombinedEntryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfrEoQFScVs_hleOQ9TU0-vev62_UK8mwYgEYOLC1sPwUK4dw/viewform?usp=pp_url&entry.891050226=Yes';
 
   exampleRowFull: Row;
 
@@ -30,14 +29,6 @@ export class AppComponent implements OnInit {
         }
       }
     );
-
-    this.exampleRowFull = new Row();
-    this.exampleRowFull.who = 'Jane Doe';
-    this.exampleRowFull.combine = false;
-    this.exampleRowFull.when = 'asdf';
-    this.exampleRowFull.what = 'Coffee';
-    this.exampleRowFull.notes = 'Some notes';
-    this.exampleRowFull.other = 'Other stuff';
   }
 
   private onRowsReceived(allRows: Row[]) {
@@ -46,35 +37,23 @@ export class AppComponent implements OnInit {
     this.reset();
   }
 
-  public filterByWho(who: string) {
-    this.rows = this.rows.filter(x => x.who === who);
+  public filterByBook(book: string) {
+    this.rows = this.rows.filter(x => x.book === book);
   }
 
   public reset() {
     this.rows = (
       this.allRows.slice()
       // .slice(allRows.length - 5)
-      .filter(isNonEmpty)
+      // .filter(isNonEmpty)
     );
     this.rows.sort(rowComparator);
   }
-
-  public lastEntrySummary(): string {
-    const last = this.lastRow;
-    if (last) {
-      return (
-        [last.combine, last.when, last.who, last.what, last.notes, last.other]
-        .filter(x => x).join(', ')
-      );
-    } else {
-      return '...';
-    }
-  }
 }
 
-function isNonEmpty(row: Row): boolean {
-  return [row.when, row.who, row.what, row.notes, row.other].some(x => !!x);
-}
+// function isNonEmpty(row: Row): boolean {
+//   return [row.when, row.who, row.what, row.notes, row.other].some(x => !!x);
+// }
 
 function toTimestamp(d: string): number {
   return new Date(d).getTime();
@@ -95,15 +74,9 @@ function compare(x, y) {
  * Todo: Why does this seem to work correctly for things missing .when entirely (instead of just having .when equal to each other) even though I didn't write anything special for that?
  */
 function rowComparator(a: Row, b: Row): number {
-  const aDate = toTimestamp(a.when);
-  const bDate = toTimestamp(b.when);
-  if (aDate !== bDate) {
-    return compare(aDate, bDate);
-  } else {
-    const aCreatedDate = toTimestamp(a.createdAt);
-    const bCreatedDate = toTimestamp(b.createdAt);
+  const aDate = toTimestamp(a.createdAt);
+  const bDate = toTimestamp(b.createdAt);
 
-    // I'm potentially breaking the x !== y rule, but timestamps should never be equal anyway...
-    return compare(aCreatedDate, bCreatedDate);
-  }
+  // I'm potentially breaking the x !== y rule, but timestamps should never be equal anyway...
+  return compare(aDate, bDate);
 }

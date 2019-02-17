@@ -15,7 +15,7 @@ export class BackendService {
     const API_KEY=localStorage.getItem('bookworm/google-api-key');
     if (API_KEY) {
       const RANGE='A1:G500';
-      const SPREADSHEET_ID='1_NXaTShS4WSieqo7CrJQJWjhuJZIkYzE9ZS3KSfj_-c';
+      const SPREADSHEET_ID='1dZGi9Vw5ReO3Lh2ebosuA6U0lxU71DqeavLuOudhMBI';
       const url=`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
       return this.http.get(url).toPromise().then(
         res => this.parser.parse(res['values'] as string[][]),
@@ -35,14 +35,12 @@ export class Row {
   // - Row.headers
   // - Row's attributes
   // - Parser.parseRow
-  static headers = ["Timestamp","Who","Combine with previous entry?","When","What","Notes","Other"];
-  createdAt: string;  // When was the entry recorded?
-  who: string;
-  combine: boolean;
-  when: string;  // When was the hangout?
-  what: string;
+  static headers = ["Timestamp","What book?","Start place (optional)","End place","Notes"];
+  createdAt: string;  // When was the entry recorded?]
+  book: string;
+  start: string;
+  end: string;
   notes: string;
-  other: string;
 }
 
 class Parser {
@@ -59,16 +57,14 @@ class Parser {
     return ret;
   }
   parseRow(row: string[]): Row {
-    const [A,B,C,D,E,F,G] = [0,1,2,3,4,5,6];
+    const [A,B,C,D,E] = [0,1,2,3,4];
 
     const ret = new Row();
     ret.createdAt = row[A];
-    ret.who = row[B];
-    ret.combine = !!row[C];
-    ret.when = row[D];
-    ret.what = row[E];
-    ret.notes = row[F];
-    ret.other = row[G];
+    ret.book = row[B];
+    ret.start = row[C];
+    ret.end = row[D];
+    ret.notes = row[E];
     return ret;
   }
 
