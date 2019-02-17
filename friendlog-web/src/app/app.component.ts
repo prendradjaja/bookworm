@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       err => {
         const key = window.prompt('Set key (leave blank for no action)');
         if (key) {
-          localStorage.setItem('friendlog/google-api-key', key);
+          localStorage.setItem('bookworm/google-api-key', key);
           location.reload();
         }
       }

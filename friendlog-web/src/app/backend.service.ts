@@ -12,7 +12,7 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   public get() {
-    const API_KEY=localStorage.getItem('friendlog/google-api-key');
+    const API_KEY=localStorage.getItem('bookworm/google-api-key');
     if (API_KEY) {
       const RANGE='A1:G500';
       const SPREADSHEET_ID='1_NXaTShS4WSieqo7CrJQJWjhuJZIkYzE9ZS3KSfj_-c';
