@@ -10,11 +10,14 @@ sense to abstract (make reusable) much of any of this stuff.
 
 **v0.1.1:** Oops, I didn't update the "New Entry" link.
 
+**v0.1.2:** Color-coded book titles! This is pretty ugly, but functional for
+now.
+
 ----
 
 Next (features):
 
-- [ ] Colored avatars or something
+- ?
 
 Next (infra):
 
