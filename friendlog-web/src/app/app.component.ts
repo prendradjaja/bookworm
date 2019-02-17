@@ -8,7 +8,7 @@ import { BackendService, Row } from './backend.service';
 })
 export class AppComponent implements OnInit {
   rows: Row[] = [];
-  newEntryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfrEoQFScVs_hleOQ9TU0-vev62_UK8mwYgEYOLC1sPwUK4dw/viewform';
+  newEntryUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform';
 
   exampleRowFull: Row;
 

@@ -8,9 +8,13 @@ changes I'll be making in both), but I think while there is a lot in common
 in these project now, they'll end up diverging and it doesn't really make
 sense to abstract (make reusable) much of any of this stuff.
 
+**v0.1.1:** Oops, I didn't update the "New Entry" link.
+
+----
+
 Next (features):
 
-- ?
+- [ ] Colored avatars or something
 
 Next (infra):
 
