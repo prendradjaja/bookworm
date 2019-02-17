@@ -1,6 +1,6 @@
 {
-  "name": "friendlog-web",
-  "version": "0.1.4",
+  "name": "bookworm",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
