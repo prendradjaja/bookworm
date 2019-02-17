@@ -13,6 +13,10 @@ sense to abstract (make reusable) much of any of this stuff.
 **v0.1.2:** Color-coded book titles! This is pretty ugly, but functional for
 now.
 
+I also now have easier deploys with `deploy.sh`!
+
+**v0.1.3:** Changed colors to be more distinguishable from Friendlog.
+
 ----
 
 Next (features):
