@@ -29,7 +29,7 @@ deploys encourage me to make small tweaks!)
 
 Next (features):
 
-- Integrate page mapper
+- [ ] Integrate page mapper
 
 Next (infra):
 
