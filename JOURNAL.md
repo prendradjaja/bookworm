@@ -17,6 +17,9 @@ I also now have easier deploys with `deploy.sh`!
 
 **v0.1.3:** Changed colors to be more distinguishable from Friendlog.
 
+**v0.1.4:** Small tweak: Moved page numbers to same row as book title. (Easier
+deploys encourage me to make small tweaks!)
+
 ----
 
 Next (features):
