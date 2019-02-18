@@ -11,6 +11,15 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
+  // todo instead of making this silly get/getCached interface, use an observable(??)
+  public getCached() {
+    const cachedData = localStorage.getItem('bookworm/cached-data');
+    if (cachedData) {
+      const res = JSON.parse(cachedData);
+      return this.parser.parse(res['values'] as string[][]);
+    }
+  }
+
   public get() {
     const API_KEY=localStorage.getItem('bookworm/google-api-key');
     if (API_KEY) {
@@ -18,7 +27,10 @@ export class BackendService {
       const SPREADSHEET_ID='1dZGi9Vw5ReO3Lh2ebosuA6U0lxU71DqeavLuOudhMBI';
       const url=`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
       return this.http.get(url).toPromise().then(
-        res => this.parser.parse(res['values'] as string[][]),
+        res => {
+          localStorage.setItem('bookworm/cached-data', JSON.stringify(res));
+          return this.parser.parse(res['values'] as string[][]);
+        },
         err => {
           window.alert('Error fetching from db');
           return [];

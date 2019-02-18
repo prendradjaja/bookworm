@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
 
   exampleRowFull: Row;
 
+  loading = true;
+
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   private allRows: Row[];
@@ -19,9 +21,18 @@ export class AppComponent implements OnInit {
   constructor (private backendService: BackendService) {}
 
   ngOnInit() {
+    const cached = this.backendService.getCached();
+    if (cached) {
+      this.onRowsReceived(cached);
+    }
+
     this.backendService.get().then(
-      allRows => this.onRowsReceived(allRows),
+      allRows => {
+        this.loading = false;
+        this.onRowsReceived(allRows)
+      },
       err => {
+        this.loading = false;  // lol isn't this duplication what .finally is for?
         const key = window.prompt('Set key (leave blank for no action)');
         if (key) {
           localStorage.setItem('bookworm/google-api-key', key);

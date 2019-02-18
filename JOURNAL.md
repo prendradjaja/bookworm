@@ -20,6 +20,11 @@ I also now have easier deploys with `deploy.sh`!
 **v0.1.4:** Small tweak: Moved page numbers to same row as book title. (Easier
 deploys encourage me to make small tweaks!)
 
+**v0.1.5:** Added some AWFUL caching that comes with some new tech debt:
+
+- [ ] Use Observable instead of this silly get/getCached thing
+- [ ] \(Probably will get handled when I do the above) Dedupe repeated code in get/getCached etc
+
 ----
 
 Next (features):
