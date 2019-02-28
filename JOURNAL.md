@@ -30,6 +30,7 @@ deploys encourage me to make small tweaks!)
 Next (features):
 
 - [ ] Integrate page mapper
+- [ ] Integrate Twilio or something for SMS
 
 Next (infra):
 
