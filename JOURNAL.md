@@ -28,10 +28,15 @@ deploys encourage me to make small tweaks!)
 ----
 
 Next (features):
-
+- [ ] After creating a new entry, auto-reload until updated
+- [ ] Group by date/book/etc
 - [ ] Integrate page mapper
+- [ ] FAB
+- [ ] max-width 400
+
+Feature wishlist:
 - [ ] Integrate Twilio or something for SMS
+- [ ] Camera & OCR
 
 Next (infra):
-
 - [x] Almost one-button deploy
