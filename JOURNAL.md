@@ -32,7 +32,7 @@ Next (features):
 - [ ] Group by date/book/etc
 - [ ] Integrate page mapper
 - [ ] FAB
-- [ ] max-width 400
+- [ ] Figure out what's up with the font size changing thing (And don't do max-width 400 until you figure that out)
 - [ ] Streak graph
 
 Feature wishlist:
