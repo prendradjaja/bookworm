@@ -33,6 +33,7 @@ Next (features):
 - [ ] Integrate page mapper
 - [ ] FAB
 - [ ] max-width 400
+- [ ] Streak graph
 
 Feature wishlist:
 - [ ] Integrate Twilio or something for SMS
