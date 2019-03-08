@@ -25,15 +25,29 @@ deploys encourage me to make small tweaks!)
 - [ ] Use Observable instead of this silly get/getCached thing
 - [ ] \(Probably will get handled when I do the above) Dedupe repeated code in get/getCached etc
 
+## 3/7
+
+**v0.1.6:** Added FAB -- and it's smart, it guesses which book you want!
+
+- When not filtering, use the first book
+- When filtering, use the book you're filtering by (which, of course, will also be the first book)
+
 ----
 
 Next (features):
+- [ ] Keep all URLs secret (like Friendlog)
+- [ ] Offline mode with Session Workers or App Cache
 - [ ] After creating a new entry, auto-reload until updated
 - [ ] Group by date/book/etc
 - [ ] Integrate page mapper
-- [ ] FAB
+- [ ] Tap anywhere on a card to filter?
+- [x] Smart FAB (The color of the most recently read book [or the book you're filtering by] -- this indicates that you're creating an entry for that book specifically)
+    - [ ] Prefill with last read page
 - [ ] Figure out what's up with the font size changing thing (And don't do max-width 400 until you figure that out)
 - [ ] Streak graph
+
+Next (requires my own data entry and/or backend):
+- [ ] Offline mode with Session Workers or App Cache
 
 Feature wishlist:
 - [ ] Integrate Twilio or something for SMS
