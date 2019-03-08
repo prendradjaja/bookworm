@@ -32,6 +32,8 @@ deploys encourage me to make small tweaks!)
 - When not filtering, use the first book
 - When filtering, use the book you're filtering by (which, of course, will also be the first book)
 
+**v0.1.7:** Add GitHub link
+
 ----
 
 Next (features):

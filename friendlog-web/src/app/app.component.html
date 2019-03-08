@@ -2,11 +2,14 @@
   <div class="plus-icon"></div>
 </a>
 <div id="top">
-  <h1>
-    <a href="#" (click)="reset()">
-      Bookworm
-    </a>
-  </h1>
+  <header>
+    <h1>
+      <a href="#" (click)="reset()">Bookworm</a>
+    </h1>
+    <span>
+      <a href="https://github.com/prendradjaja/bookworm">GitHub</a>
+    </span>
+  </header>
   <a [attr.href]="newEntryUrl">New entry</a>
   <span *ngIf="loading" id="loading"> (Loading...)</span>
 </div>
