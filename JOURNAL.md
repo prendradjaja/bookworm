@@ -34,6 +34,10 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.7:** Add GitHub link
 
+**NEXT:**
+
+- Favicon
+
 ----
 
 Next (features):
