@@ -44,6 +44,7 @@ deploys encourage me to make small tweaks!)
 
 Next (features):
 - [ ] Keep all URLs secret (like Friendlog)
+    - [ ] And then link to responses sheet
 - [ ] Offline mode with Session Workers or App Cache
 - [ ] After creating a new entry, auto-reload until updated
 - [ ] Group by date/book/etc
