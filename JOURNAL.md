@@ -34,15 +34,18 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.7:** Add GitHub link
 
-## 3/9
+## 3/9-12
 
 **NEXT:**
 
 - Favicon
 
+In progress: Calendar view (`calendar` branch)
+
 ----
 
 Next (features):
+- [ ] Calendar view (`calendar` branch)
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Offline mode with Session Workers or App Cache
