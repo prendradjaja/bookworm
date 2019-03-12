@@ -13,35 +13,19 @@
   <a [attr.href]="newEntryUrl">New entry</a>
   <span *ngIf="loading" id="loading"> (Loading...)</span>
 </div>
+
+<table class="calendar-view">
+  <tr *ngFor="let week of weeks">
+    <td *ngFor="let day of week"
+        [style.background-color]="day.color ? day.color : '#dddddd'">
+      {{day.d}}
+    </td>
+  </tr>
+</table>
+
 <div id="cards">
-  <!-- <app-event-card [row]='exampleRowFull'></app-event-card> -->
   <app-event-card *ngFor="let row of rows"
                   [row]="row"
                   (onClick)="filterByBook($event)">
   </app-event-card>
 </div>
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Timestamp</th>
-      <th>Who</th>
-      <th>Combine?</th>
-      <th>When</th>
-      <th>What</th>
-      <th>Notes</th>
-      <th>Other</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of rows">
-      <td>{{row.createdAt}}</td>
-      <td>{{row.who}}</td>
-      <td>{{row.combine}}</td>
-      <td>{{row.when}}</td>
-      <td>{{row.what}}</td>
-      <td>{{row.notes}}</td>
-      <td>{{row.other}}</td>
-    </tr>
-  </tbody>
-</table> -->

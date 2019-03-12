@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   fabColor: string = 'gray';
   fabUrl: string = NEW_ENTRY_URL;
 
+  weeks = [];
+
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   private allRows: Row[];
@@ -51,6 +53,49 @@ export class AppComponent implements OnInit {
     this.lastRow = allRows[allRows.length - 1];
     this.allRows = allRows;
     this.reset();
+
+    this.createCalendar(allRows);
+  }
+
+  private createCalendar(allRows: Row[]) {
+    const eventsByDate: { [date: string]: Row[] } = {};
+    allRows.forEach(row => {
+      const key = stos(row.createdAt);
+      if (eventsByDate[key]) {
+        eventsByDate[key].push(row);
+      } else {
+        eventsByDate[key] = [row];
+      }
+    });
+    // console.log(eventsByDate)
+    // return;
+
+    const startDate = new Date(2019, 0, 14);
+    let d = startDate;
+    this.weeks = [];
+    while (d.getTime() < new Date().getTime()) {
+      const week = [];
+      for (let i = 0; i < 7; i++) {
+        const day = {
+          d: d.getDate()
+        } as any;
+        const todaysEvents = eventsByDate[dtos(d)];
+        if (todaysEvents) {
+          const colors = new Set();
+          todaysEvents.forEach(row => {
+            colors.add(this.getColor(row.book))
+          });
+          if (colors.size > 1) {
+            day.color = 'black';
+          } else {
+            day.color = oneItemSetToItem(colors);
+          }
+        }
+        week.push(day);
+        d = add(d, 1);
+      }
+      this.weeks.push(week);
+    }
   }
 
   public filterByBook(book: string) {
@@ -126,4 +171,38 @@ function rowComparator(a: Row, b: Row): number {
 
   // I'm potentially breaking the x !== y rule, but timestamps should never be equal anyway...
   return compare(aDate, bDate);
+}
+
+// todo real tz handling? moment?
+function dtos(d: Date) {
+  // return d.toISOString().split('T')[0];
+  const Y = d.getFullYear();
+  const M = d.getMonth() + 1;
+  const D = d.getDate();
+  return `${M}/${D}/${Y}`;
+}
+
+function stod(s: string) {
+  const temp = new Date(s);
+  // todo discard time portion? how does this work with tzs?
+  return temp;
+}
+
+function stos(s: string) {
+  return dtos(stod(s));
+}
+
+function add(d: Date, days) {
+  const DAY_IN_MS = 1000 * 60 * 60 * 24;
+  return new Date(d.getTime() + DAY_IN_MS * days);
+}
+
+function oneItemSetToItem<T>(s: Set<T>): T {
+  if (s.size !== 1) {
+    window.alert('this set is not a one item set')
+  } else {
+    let items = []
+    s.forEach(x => items.push(x));
+    return items[0];
+  }
 }
