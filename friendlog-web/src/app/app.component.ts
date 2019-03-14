@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
     // When filtering, use the book you're filtering by (which, of course, will also be the first book)
     // TODO: If you try to prefill with an invalid book name, it just doesn't choose a book. Maybe prefill the "other" instead? How could I accomplish that?
 
-    if (this.rows.length === 0) {
+    if (this.rows.length === 0 || !this.rows[0].book) {
       this.fabColor = null;
       return;
     }
