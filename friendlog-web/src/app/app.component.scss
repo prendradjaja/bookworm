@@ -109,7 +109,7 @@ a#new-entry-fab {
 .calendar-view {
     margin-top: 24px;
     
-    td {
+    td.calendar-day {
         height: 48px;
         width: 48px;
         color: white;
@@ -141,9 +141,6 @@ a#new-entry-fab {
 }
 
 
-.toggle-row {
-    vertical-align: top;
-    td {
-        height: 0;
-    }
+.toggle-row td {
+    text-align: center;
 }
