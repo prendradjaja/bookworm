@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
 
   activeCalendarDay: Date;
 
+  calendarVisible = getCalendarSetting();
+
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   private allRows: Row[];
@@ -67,6 +69,11 @@ export class AppComponent implements OnInit {
       }
     });
     this.createCalendar(allRows);
+  }
+
+  toggleCalendar() {
+    this.calendarVisible = !this.calendarVisible;
+    setCalendarSetting(this.calendarVisible);
   }
 
   private createCalendar(allRows: Row[]) {
@@ -229,4 +236,14 @@ function oneItemSetToItem<T>(s: Set<T>): T {
     s.forEach(x => items.push(x));
     return items[0];
   }
+}
+
+const CALENDAR_SETTING = 'bookworm/calendar-visible';
+
+function getCalendarSetting() {
+  return JSON.parse(localStorage.getItem(CALENDAR_SETTING));
+}
+
+function setCalendarSetting(value) {
+  localStorage.setItem(CALENDAR_SETTING, JSON.stringify(value));
 }
