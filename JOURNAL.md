@@ -46,6 +46,8 @@ In progress: Calendar view (`calendar` branch)
 
 Next (features):
 - [ ] Calendar view (`calendar` branch)
+    - [ ] Multi-book days
+    - [ ] If no book, gray fab
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Offline mode with Session Workers or App Cache
