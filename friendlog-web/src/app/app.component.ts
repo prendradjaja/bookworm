@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       this.onRowsReceived(cached);
     }
 
-    false && this.backendService.get().then(
+    this.backendService.get().then(
       allRows => {
         this.loading = false;
         this.onRowsReceived(allRows)
