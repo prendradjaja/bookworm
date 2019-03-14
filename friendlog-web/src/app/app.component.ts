@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   activeCalendarDay: Date;
 
-  calendarVisible = getCalendarSetting();
+  showFullCalendar = false;
 
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
@@ -31,6 +31,13 @@ export class AppComponent implements OnInit {
   private eventsByDate: { [date: string]: Row[] };
 
   constructor (private backendService: BackendService) {}
+
+  visibleWeeks() {
+    if (this.showFullCalendar) {
+      return this.weeks;
+    }
+    return this.weeks.slice(this.weeks.length - 2);
+  }
 
   ngOnInit() {
     const cached = this.backendService.getCached();
@@ -72,8 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleCalendar() {
-    this.calendarVisible = !this.calendarVisible;
-    setCalendarSetting(this.calendarVisible);
+    this.showFullCalendar = !this.showFullCalendar;
   }
 
   private createCalendar(allRows: Row[]) {
@@ -236,14 +242,4 @@ function oneItemSetToItem<T>(s: Set<T>): T {
     s.forEach(x => items.push(x));
     return items[0];
   }
-}
-
-const CALENDAR_SETTING = 'bookworm/calendar-visible';
-
-function getCalendarSetting() {
-  return JSON.parse(localStorage.getItem(CALENDAR_SETTING));
-}
-
-function setCalendarSetting(value) {
-  localStorage.setItem(CALENDAR_SETTING, JSON.stringify(value));
 }

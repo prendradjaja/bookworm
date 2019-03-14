@@ -107,7 +107,6 @@ a#new-entry-fab {
 }
 
 .calendar-view {
-
     margin-top: 24px;
     
     td {
@@ -138,5 +137,13 @@ a#new-entry-fab {
             // todo do the same thing that bryant and i did with bookmark indicators? (i.e. even lighter if you re-hover or whatever)
             opacity: 0.75;
         }
+    }
+}
+
+
+.toggle-row {
+    vertical-align: top;
+    td {
+        height: 0;
     }
 }

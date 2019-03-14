@@ -11,20 +11,25 @@
     </span>
   </header>
   <a [attr.href]="newEntryUrl">New entry</a>
-  ·
-  <!-- use <button> for calendar toggle -->
-  <a href="#" (click)="toggleCalendar()">{{ calendarVisible ? "Hide calendar" : "Show calendar" }}</a>
   <span *ngIf="loading" id="loading"> (Loading...)</span>
 </div>
 
-<table *ngIf="calendarVisible" class="calendar-view">
-  <tr *ngFor="let week of weeks">
+<table class="calendar-view">
+  <tr *ngFor="let week of visibleWeeks()">
     <td *ngFor="let day of week"
         [style.background-color]="day.color ? day.color : '#dddddd'"
         [ngClass]="{ 'day-selected': day && day.fullDate === activeCalendarDay }"
         (click)="clickCalendarDay(day)">
       <span class="day-number">{{day.d}}</span>
       <calendar-day-dots [n]="day.numEvents"></calendar-day-dots>
+    </td>
+  </tr>
+  <tr class="toggle-row">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <button class="toggle-calendar" (click)="toggleCalendar()">{{ showFullCalendar ? "▲" : "▼" }}</button>
     </td>
   </tr>
 </table>
