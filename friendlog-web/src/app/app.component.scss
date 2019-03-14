@@ -111,8 +111,31 @@ a#new-entry-fab {
     margin-top: 24px;
     
     td {
-        height: 50px;
-        width: 50px;
+        height: 48px;
+        width: 48px;
         color: white;
+        border: 1px solid white;
+        cursor: pointer;
+        text-align: center;
+
+
+        .day-number {
+            font-size: 18px;
+        }
+    
+        position: relative;  // for <calendar-day-dots>
+
+        &.day-selected {
+            border: 1px solid black;
+            .day-number {
+                font-weight: bold;
+            }
+            opacity: 0.5;
+        }
+
+        &:hover:not(.day-selected) {
+            // todo do the same thing that bryant and i did with bookmark indicators? (i.e. even lighter if you re-hover or whatever)
+            opacity: 0.75;
+        }
     }
 }

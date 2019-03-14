@@ -34,11 +34,12 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.7:** Add GitHub link
 
-## 3/9
+## 3/9-13
 
 **NEXT:**
 
 - Favicon
+- Calendar view
 
 ----
 

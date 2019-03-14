@@ -21,9 +21,12 @@ export class AppComponent implements OnInit {
 
   weeks = [];
 
+  activeCalendarDay: Date;
+
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   private allRows: Row[];
+  private eventsByDate: { [date: string]: Row[] };
 
   constructor (private backendService: BackendService) {}
 
@@ -33,7 +36,7 @@ export class AppComponent implements OnInit {
       this.onRowsReceived(cached);
     }
 
-    this.backendService.get().then(
+    false && this.backendService.get().then(
       allRows => {
         this.loading = false;
         this.onRowsReceived(allRows)
@@ -54,32 +57,31 @@ export class AppComponent implements OnInit {
     this.allRows = allRows;
     this.reset();
 
+    this.eventsByDate = {};
+    allRows.forEach(row => {
+      const key = stos(row.createdAt);
+      if (this.eventsByDate[key]) {
+        this.eventsByDate[key].push(row);
+      } else {
+        this.eventsByDate[key] = [row];
+      }
+    });
     this.createCalendar(allRows);
   }
 
   private createCalendar(allRows: Row[]) {
-    const eventsByDate: { [date: string]: Row[] } = {};
-    allRows.forEach(row => {
-      const key = stos(row.createdAt);
-      if (eventsByDate[key]) {
-        eventsByDate[key].push(row);
-      } else {
-        eventsByDate[key] = [row];
-      }
-    });
-    // console.log(eventsByDate)
-    // return;
-
     const startDate = new Date(2019, 0, 14);
     let d = startDate;
     this.weeks = [];
     while (d.getTime() < new Date().getTime()) {
       const week = [];
       for (let i = 0; i < 7; i++) {
+        // todo add typing to the day object
         const day = {
-          d: d.getDate()
+          d: d.getDate(),
+          fullDate: d
         } as any;
-        const todaysEvents = eventsByDate[dtos(d)];
+        const todaysEvents = this.eventsByDate[dtos(d)];
         if (todaysEvents) {
           const colors = new Set();
           todaysEvents.forEach(row => {
@@ -90,6 +92,9 @@ export class AppComponent implements OnInit {
           } else {
             day.color = oneItemSetToItem(colors);
           }
+          day.numEvents = todaysEvents.length;
+        } else {
+          day.numEvents = 0;
         }
         week.push(day);
         d = add(d, 1);
@@ -99,8 +104,22 @@ export class AppComponent implements OnInit {
   }
 
   public filterByBook(book: string) {
+    this.reset();
     this.rows = this.rows.filter(x => x.book === book);
     this.updateFabColor();
+  }
+
+  public clickCalendarDay(e) {
+    this.filterByDate(e.fullDate as Date);
+    this.activeCalendarDay = e.fullDate;
+  }
+
+  private filterByDate(d: Date) {
+    this.reset();
+    this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d))
+    console.log(this.fabColor)
+    this.updateFabColor();
+    console.log(this.fabColor)
   }
 
   // todo rename
@@ -108,6 +127,11 @@ export class AppComponent implements OnInit {
     // When not filtering, use the first book
     // When filtering, use the book you're filtering by (which, of course, will also be the first book)
     // TODO: If you try to prefill with an invalid book name, it just doesn't choose a book. Maybe prefill the "other" instead? How could I accomplish that?
+
+    if (this.rows.length === 0) {
+      this.fabColor = null;
+      return;
+    }
 
     const book = this.rows[0].book;
     // todo is there a real way of doing this?
