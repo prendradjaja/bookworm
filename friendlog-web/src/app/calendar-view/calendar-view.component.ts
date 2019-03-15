@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Row } from '../backend.service';
 
-// todo try using immutable stuff and on-push CD
-
 @Component({
   selector: 'calendar-view',
   templateUrl: './calendar-view.component.html',
@@ -32,6 +30,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.computeEventsByDate();
     this.computeWeeks();
+    // todo if i do a console.log here, i can see that this seems to only get run twice (on initial set and on re-set) -- why is that true [even tho i'm not using immutable data]
   }
 
   visibleWeeks() {
