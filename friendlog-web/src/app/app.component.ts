@@ -19,25 +19,13 @@ export class AppComponent implements OnInit {
   fabColor: string = 'gray';
   fabUrl: string = NEW_ENTRY_URL;
 
-  weeks = [];
-
-  activeCalendarDay: Date;
-
-  showFullCalendar = false;
-
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   private allRows: Row[];
-  private eventsByDate: { [date: string]: Row[] };
 
   constructor (private backendService: BackendService) {}
 
-  visibleWeeks() {
-    if (this.showFullCalendar) {
-      return this.weeks;
-    }
-    return this.weeks.slice(this.weeks.length - 2);
-  }
+  
 
   ngOnInit() {
     const cached = this.backendService.getCached();
@@ -66,65 +54,12 @@ export class AppComponent implements OnInit {
     this.allRows = allRows;
     this.reset();
 
-    this.eventsByDate = {};
-    allRows.forEach(row => {
-      const key = stos(row.createdAt);
-      if (this.eventsByDate[key]) {
-        this.eventsByDate[key].push(row);
-      } else {
-        this.eventsByDate[key] = [row];
-      }
-    });
-    this.createCalendar(allRows);
-  }
-
-  toggleCalendar() {
-    this.showFullCalendar = !this.showFullCalendar;
-  }
-
-  private createCalendar(allRows: Row[]) {
-    const startDate = new Date(2019, 0, 14);
-    let d = startDate;
-    this.weeks = [];
-    while (d.getTime() < new Date().getTime()) {
-      const week = [];
-      for (let i = 0; i < 7; i++) {
-        // todo add typing to the day object
-        const day = {
-          d: d.getDate(),
-          fullDate: d
-        } as any;
-        const todaysEvents = this.eventsByDate[dtos(d)];
-        if (todaysEvents) {
-          const colors = new Set();
-          todaysEvents.forEach(row => {
-            colors.add(this.getColor(row.book))
-          });
-          if (colors.size > 1) {
-            day.color = 'black';
-          } else {
-            day.color = oneItemSetToItem(colors);
-          }
-          day.numEvents = todaysEvents.length;
-        } else {
-          day.numEvents = 0;
-        }
-        week.push(day);
-        d = add(d, 1);
-      }
-      this.weeks.push(week);
-    }
   }
 
   public filterByBook(book: string) {
     this.reset();
     this.rows = this.rows.filter(x => x.book === book);
     this.updateFabColor();
-  }
-
-  public clickCalendarDay(e) {
-    this.filterByDate(e.fullDate as Date);
-    this.activeCalendarDay = e.fullDate;
   }
 
   private filterByDate(d: Date) {
@@ -210,36 +145,25 @@ function rowComparator(a: Row, b: Row): number {
   return compare(aDate, bDate);
 }
 
-// todo real tz handling? moment?
-function dtos(d: Date) {
-  // return d.toISOString().split('T')[0];
-  const Y = d.getFullYear();
-  const M = d.getMonth() + 1;
-  const D = d.getDate();
-  return `${M}/${D}/${Y}`;
-}
 
-function stod(s: string) {
-  const temp = new Date(s);
-  // todo discard time portion? how does this work with tzs?
-  return temp;
-}
+// todo dedupe these
+                                              // todo real tz handling? moment?
+                                              function dtos(d: Date) {
+                                                // return d.toISOString().split('T')[0];
+                                                const Y = d.getFullYear();
+                                                const M = d.getMonth() + 1;
+                                                const D = d.getDate();
+                                                return `${M}/${D}/${Y}`;
+                                              }
 
-function stos(s: string) {
-  return dtos(stod(s));
-}
+                                              function stod(s: string) {
+                                                const temp = new Date(s);
+                                                // todo discard time portion? how does this work with tzs?
+                                                return temp;
+                                              }
 
-function add(d: Date, days) {
-  const DAY_IN_MS = 1000 * 60 * 60 * 24;
-  return new Date(d.getTime() + DAY_IN_MS * days);
-}
+                                              function stos(s: string) {
+                                                return dtos(stod(s));
+                                              }
 
-function oneItemSetToItem<T>(s: Set<T>): T {
-  if (s.size !== 1) {
-    window.alert('this set is not a one item set')
-  } else {
-    let items = []
-    s.forEach(x => items.push(x));
-    return items[0];
-  }
-}
+// more stuff goes here
