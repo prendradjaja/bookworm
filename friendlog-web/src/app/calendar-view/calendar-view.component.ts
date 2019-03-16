@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Row } from '../backend.service';
+import { ColorService } from '../color.service';
 
 @Component({
   selector: 'calendar-view',
@@ -17,7 +18,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   showFullCalendar = true;
   private eventsByDate: { [date: string]: Row[] };
 
-  constructor() { }
+  constructor(private colorService: ColorService) { }
 
   ngOnInit() {
     const foos = window['cals'] = window['cals'] || []; // ptodo-debug
@@ -78,7 +79,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
         if (todaysEvents) {
           const colors = new Set();
           todaysEvents.forEach(row => {
-            colors.add(this.getColor(row.book))
+            colors.add(this.colorService.getColor(row.book))
           });
           if (colors.size === 1) {
             day.color = oneItemSetToItem(colors);
@@ -102,20 +103,6 @@ export class CalendarViewComponent implements OnInit, OnChanges {
       }
       this.weeks.push(week);
     }
-  }
-
-  // todo dedupe from event card comp
-  private getColor(book: string): string {
-    var hash = 0;
-    for (var i = 0; i < book.length; i++) {
-      hash = book.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    var colour = '#';
-    for (var i = 0; i < 3; i++) {
-      var value = (hash >> (i * 8)) & 0xFF;
-      colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
   }
 }
 

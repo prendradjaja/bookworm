@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService, Row } from './backend.service';
+import { ColorService } from './color.service';
 
 const NEW_ENTRY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform';
 
@@ -23,7 +24,10 @@ export class AppComponent implements OnInit {
   // Only fetched once. Copy, don't mutate.
   allRows: Row[];
 
-  constructor (private backendService: BackendService) {}
+  constructor (
+    private backendService: BackendService,
+    private colorService: ColorService
+  ) {}
 
   
 
@@ -84,24 +88,10 @@ export class AppComponent implements OnInit {
     const book = this.rows[0].book;
     // todo is there a real way of doing this?
     const urlEncodedBook = book.replace(/ /g, '+');
-    this.fabColor = this.getColor(book);
+    this.fabColor = this.colorService.getColor(book);
     let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
                + urlEncodedBook);
     this.fabUrl = url;
-  }
-
-  // todo dedupe from event card comp
-  private getColor(book: string): string {
-    var hash = 0;
-    for (var i = 0; i < book.length; i++) {
-      hash = book.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    var colour = '#';
-    for (var i = 0; i < 3; i++) {
-      var value = (hash >> (i * 8)) & 0xFF;
-      colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
   }
 
   public reset() {
