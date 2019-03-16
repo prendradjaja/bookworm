@@ -34,7 +34,7 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.7:** Add GitHub link
 
-## 3/9-13
+## 3/9-15
 
 **NEXT:**
 
@@ -44,6 +44,9 @@ deploys encourage me to make small tweaks!)
 ----
 
 Next (features):
+- [x] Calendar view (`calendar` branch)
+    - [ ] Multi-book days
+    - [x] If no book, gray fab
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Offline mode with Session Workers or App Cache
