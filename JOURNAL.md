@@ -36,7 +36,7 @@ deploys encourage me to make small tweaks!)
 
 ## 3/9-15
 
-**NEXT:**
+**v0.1.8:**
 
 - Favicon
 - Calendar view
