@@ -50,6 +50,8 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.10:** End-of-book marker style
 
+**v0.1.11:** Color service
+
 ----
 
 Next (features):
@@ -57,7 +59,7 @@ Next (features):
 - [ ] Refactor: Sizes and colors
 - [ ] Refactor: calendar styles are getting out of hand (z indexes!!!)
 - [x] Something for the end of a book
-- [ ] Color service
+- [x] Color service
 - [x] Calendar view (`calendar` branch)
     - [x] Multi-book days
     - [x] If no book, gray fab
