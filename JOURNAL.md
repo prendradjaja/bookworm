@@ -41,10 +41,14 @@ deploys encourage me to make small tweaks!)
 - Favicon
 - Calendar view
 
+## 3/15
+
 **v0.1.9:**
 
 - Calendar: Two colors in one day!
 - Calendar: End-of-book marker (p ugly rn but w/e)
+
+**v0.1.10:** End-of-book marker style
 
 ----
 
