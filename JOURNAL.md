@@ -76,6 +76,7 @@ Next (features):
 - [ ] Streak graph
 - [ ] Multi-line
 - [ ] TOC checklist
+- [ ] Bugfix: Changing filter should update (i.e. null out) activeCalendarDay
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
