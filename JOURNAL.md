@@ -68,6 +68,8 @@ Next (features):
     - [ ] Prefill with last read page
 - [ ] Figure out what's up with the font size changing thing (And don't do max-width 400 until you figure that out)
 - [ ] Streak graph
+- [ ] Multi-line
+- [ ] TOC checklist
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
