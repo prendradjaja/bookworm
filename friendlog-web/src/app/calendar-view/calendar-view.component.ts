@@ -90,6 +90,10 @@ export class CalendarViewComponent implements OnInit, OnChanges {
             day.color = 'black';
           }
           day.numEvents = todaysEvents.length;
+
+          if (anyIsEnd(todaysEvents)) {
+            day.endOfBook = true;
+          }
         } else {
           day.numEvents = 0;
         }
@@ -158,4 +162,8 @@ function twoItemSetToArray<T>(s: Set<T>): T[] {
     s.forEach(x => items.push(x));
     return items;
   }
+}
+
+function anyIsEnd(rows: Row[]) {
+  return rows.some(x => x.notes === 'end');
 }

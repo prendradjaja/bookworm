@@ -41,19 +41,21 @@ deploys encourage me to make small tweaks!)
 - Favicon
 - Calendar view
 
-**NEXT:**
+**v0.1.9:**
 
 - Calendar: Two colors in one day!
+- Calendar: End-of-book marker (p ugly rn but w/e)
 
 ----
 
 Next (features):
+- [ ] Refactor: computeWeeks is getting real hairy
 - [ ] Refactor: Sizes and colors
-- [ ] Something for the end of a book
-- [ ] Can I refactor calendar & its styles? probably getting hairy
+- [ ] Refactor: calendar styles are getting out of hand (z indexes!!!)
+- [x] Something for the end of a book
 - [ ] Color service
 - [x] Calendar view (`calendar` branch)
-    - [ ] Multi-book days
+    - [x] Multi-book days
     - [x] If no book, gray fab
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
@@ -76,3 +78,4 @@ Feature wishlist:
 
 Next (infra):
 - [x] Almost one-button deploy
+- [ ] Prettier

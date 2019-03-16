@@ -3,7 +3,10 @@
     <td class="calendar-day" *ngFor="let day of week"
         [style.background-color]="day.color ? day.color : '#eeeeee'"
         [style.color]="day.color || day.multiColor ? 'white' : '#777777'"
-        [ngClass]="{ 'day-selected': day && day.fullDate === activeCalendarDay }"
+        [ngClass]="{
+          'day-selected': day && day.fullDate === activeCalendarDay,
+          'end-of-book': day && day.endOfBook
+        }"
         (click)="clickCalendarDay(day)">
       <div *ngIf="day.multiColor"
            class="multi-color"

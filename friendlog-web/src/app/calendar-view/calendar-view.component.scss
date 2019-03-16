@@ -15,6 +15,26 @@ table.calendar-view {
         text-align: center;
         // todo align with left side?
 
+        &.end-of-book {
+            &:before {
+                $downsize: 6px;
+                position: absolute;
+                top: $downsize / 2;
+                left: $downsize / 2;
+                width: $calendar-day-size - $downsize;
+                height: $calendar-day-size - $downsize;
+                border-radius: ($calendar-day-size - $downsize)/2;
+                background: white;
+                z-index: 2;
+                opacity: 0.5;
+                content: '';
+            }
+            .day-number {
+                font-weight: bold;
+                font-size: 24px;
+            }
+        }
+
         .multi-color {
             position: absolute;
             top: 0;
@@ -23,12 +43,14 @@ table.calendar-view {
             width: 0px;
             border-top:48px solid red;
             border-right:48px solid yellow;
+            z-index: 1;
         }
 
         .day-number {
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 3;
             height: $calendar-day-size;
             width: $calendar-day-size;
             line-height: $calendar-day-size;
