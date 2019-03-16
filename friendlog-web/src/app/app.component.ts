@@ -21,9 +21,11 @@ export class AppComponent implements OnInit {
 
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
-  private allRows: Row[];
+  allRows: Row[];
 
   constructor (private backendService: BackendService) {}
+
+  
 
   ngOnInit() {
     const cached = this.backendService.getCached();
@@ -51,11 +53,21 @@ export class AppComponent implements OnInit {
     this.lastRow = allRows[allRows.length - 1];
     this.allRows = allRows;
     this.reset();
+
   }
 
   public filterByBook(book: string) {
+    this.reset();
     this.rows = this.rows.filter(x => x.book === book);
     this.updateFabColor();
+  }
+
+  public filterByDate(d: Date) {
+    this.reset();
+    this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d))
+    console.log(this.fabColor)
+    this.updateFabColor();
+    console.log(this.fabColor)
   }
 
   // todo rename
@@ -63,6 +75,11 @@ export class AppComponent implements OnInit {
     // When not filtering, use the first book
     // When filtering, use the book you're filtering by (which, of course, will also be the first book)
     // TODO: If you try to prefill with an invalid book name, it just doesn't choose a book. Maybe prefill the "other" instead? How could I accomplish that?
+
+    if (this.rows.length === 0 || !this.rows[0].book) {
+      this.fabColor = null;
+      return;
+    }
 
     const book = this.rows[0].book;
     // todo is there a real way of doing this?
@@ -127,3 +144,26 @@ function rowComparator(a: Row, b: Row): number {
   // I'm potentially breaking the x !== y rule, but timestamps should never be equal anyway...
   return compare(aDate, bDate);
 }
+
+
+// todo dedupe these
+                                              // todo real tz handling? moment?
+                                              function dtos(d: Date) {
+                                                // return d.toISOString().split('T')[0];
+                                                const Y = d.getFullYear();
+                                                const M = d.getMonth() + 1;
+                                                const D = d.getDate();
+                                                return `${M}/${D}/${Y}`;
+                                              }
+
+                                              function stod(s: string) {
+                                                const temp = new Date(s);
+                                                // todo discard time portion? how does this work with tzs?
+                                                return temp;
+                                              }
+
+                                              function stos(s: string) {
+                                                return dtos(stod(s));
+                                              }
+
+// more stuff goes here

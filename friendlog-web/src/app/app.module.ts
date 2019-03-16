@@ -4,11 +4,15 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { EventCardComponent } from './event-card/event-card.component';
+import { CalendarDayDotsComponent } from './calendar-day-dots/calendar-day-dots.component';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventCardComponent
+    EventCardComponent,
+    CalendarDayDotsComponent,
+    CalendarViewComponent
   ],
   imports: [
     BrowserModule,
