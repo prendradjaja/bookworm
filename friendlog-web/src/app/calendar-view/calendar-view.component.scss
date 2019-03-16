@@ -15,24 +15,18 @@ table.calendar-view {
         text-align: center;
         // todo align with left side?
 
-        &.end-of-book {
-            &:before {
-                $downsize: 6px;
-                position: absolute;
-                top: $downsize / 2;
-                left: $downsize / 2;
-                width: $calendar-day-size - $downsize;
-                height: $calendar-day-size - $downsize;
-                border-radius: ($calendar-day-size - $downsize)/2;
-                background: white;
-                z-index: 2;
-                opacity: 0.5;
-                content: '';
-            }
-            .day-number {
-                font-weight: bold;
-                font-size: 24px;
-            }
+        &.end-of-book:before {
+            $downsize: 6px;
+            position: absolute;
+            top: $downsize / 2;
+            left: $downsize / 2;
+            width: $calendar-day-size - $downsize;
+            height: $calendar-day-size - $downsize;
+            border-radius: ($calendar-day-size - $downsize)/2;
+            background: white;
+            z-index: 2;
+            opacity: 0.5;
+            content: '';
         }
 
         .multi-color {
