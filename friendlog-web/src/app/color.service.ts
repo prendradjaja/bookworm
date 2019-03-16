@@ -7,6 +7,9 @@ export class ColorService {
 
   constructor() { }
 
+  /**
+   * Adapted from https://stackoverflow.com/a/16348977
+   */
   public getColor(book: string): string {
     var hash = 0;
     for (var i = 0; i < book.length; i++) {

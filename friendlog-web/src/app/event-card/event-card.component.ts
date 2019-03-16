@@ -22,9 +22,6 @@ export class EventCardComponent implements OnInit {
     this.onClick.emit(who);
   }
 
-  /**
-   * Adapted from https://stackoverflow.com/a/16348977
-   */
   getColor(): string {
     return this.colorService.getColor(this.row.book);
   }
