@@ -41,9 +41,17 @@ deploys encourage me to make small tweaks!)
 - Favicon
 - Calendar view
 
+**NEXT:**
+
+- Calendar: Two colors in one day!
+
 ----
 
 Next (features):
+- [ ] Refactor: Sizes and colors
+- [ ] Something for the end of a book
+- [ ] Can I refactor calendar & its styles? probably getting hairy
+- [ ] Color service
 - [x] Calendar view (`calendar` branch)
     - [ ] Multi-book days
     - [x] If no book, gray fab

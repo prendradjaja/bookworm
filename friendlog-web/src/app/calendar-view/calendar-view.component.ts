@@ -14,7 +14,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
 
   weeks = [];
   activeCalendarDay: Date;
-  showFullCalendar = false;
+  showFullCalendar = true;
   private eventsByDate: { [date: string]: Row[] };
 
   constructor() { }
@@ -80,10 +80,14 @@ export class CalendarViewComponent implements OnInit, OnChanges {
           todaysEvents.forEach(row => {
             colors.add(this.getColor(row.book))
           });
-          if (colors.size > 1) {
-            day.color = 'black';
-          } else {
+          if (colors.size === 1) {
             day.color = oneItemSetToItem(colors);
+          } else if (colors.size === 2) {
+            day.multiColor = true;
+            // todo the more frequent one should be on top
+            [day.rightColor, day.topColor] = twoItemSetToArray(colors);
+          } else {
+            day.color = 'black';
           }
           day.numEvents = todaysEvents.length;
         } else {
@@ -143,5 +147,15 @@ function oneItemSetToItem<T>(s: Set<T>): T {
     let items = []
     s.forEach(x => items.push(x));
     return items[0];
+  }
+}
+
+function twoItemSetToArray<T>(s: Set<T>): T[] {
+  if (s.size !== 2) {
+    window.alert('this set is not a two item set')
+  } else {
+    let items = [] as T[];
+    s.forEach(x => items.push(x));
+    return items;
   }
 }

@@ -1,6 +1,8 @@
+$calendar-day-size: 48px;
+
 :host {
     display: block;
-    width: 48px;
+    width: $calendar-day-size;
     text-align: center;
     position: absolute;
     bottom: 3px;

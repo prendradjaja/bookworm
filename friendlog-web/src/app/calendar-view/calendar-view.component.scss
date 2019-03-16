@@ -1,17 +1,37 @@
-.calendar-view {
+$calendar-day-size: 48px;
+
+table.calendar-view {
     margin-top: 24px;
+    border-spacing: 0;
     
     td.calendar-day {
-        height: 48px;
-        width: 48px;
+        padding: 0;
+        $calendar-day-size: 48px;
+        height: $calendar-day-size;
+        width: $calendar-day-size;
         color: white;
         border: 1px solid white;
         cursor: pointer;
         text-align: center;
         // todo align with left side?
 
+        .multi-color {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0px;
+            width: 0px;
+            border-top:48px solid red;
+            border-right:48px solid yellow;
+        }
 
         .day-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: $calendar-day-size;
+            width: $calendar-day-size;
+            line-height: $calendar-day-size;
             font-size: 18px;
         }
     
