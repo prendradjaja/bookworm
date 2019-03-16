@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
-  private allRows: Row[];
+  allRows: Row[];
 
   constructor (private backendService: BackendService) {}
 
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     this.updateFabColor();
   }
 
-  private filterByDate(d: Date) {
+  public filterByDate(d: Date) {
     this.reset();
     this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d))
     console.log(this.fabColor)
