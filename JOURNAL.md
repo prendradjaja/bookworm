@@ -52,6 +52,12 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.11:** Color service
 
+## 3/18
+
+**NEXT:**
+
+- Fix z-index bug for multi-book days
+
 ----
 
 Next (features):
