@@ -11,10 +11,10 @@ import { ColorService } from '../color.service';
 export class CalendarViewComponent implements OnInit, OnChanges {
 
   @Input() allRows: Row[];
+  @Input() currentDateFilter: Date;
   @Output() filterByDate = new EventEmitter<Date>();
 
   weeks = [];
-  activeCalendarDay: Date;
   showFullCalendar = false;
   private eventsByDate: { [date: string]: Row[] };
 
@@ -47,7 +47,6 @@ export class CalendarViewComponent implements OnInit, OnChanges {
 
   public clickCalendarDay(e) {
     this.filterByDate.emit(e.fullDate as Date);  // ptodo emit filter event
-    this.activeCalendarDay = e.fullDate;
   }
 
 

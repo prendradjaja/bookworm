@@ -57,6 +57,7 @@ deploys encourage me to make small tweaks!)
 **NEXT:**
 
 - Fix z-index bug for multi-book days
+- Changing filter removes "active calendar day" styling
 
 ----
 
@@ -83,6 +84,8 @@ Next (features):
 - [ ] Multi-line
 - [ ] TOC checklist
 - [ ] Bugfix: Changing filter should update (i.e. null out) activeCalendarDay
+- [ ] First-class support for news articles etc
+- [ ] Prefill "other"
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache

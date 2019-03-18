@@ -4,7 +4,7 @@
         [style.background-color]="day.color ? day.color : '#eeeeee'"
         [style.color]="day.color || day.multiColor ? 'white' : '#777777'"
         [ngClass]="{
-          'day-selected': day && day.fullDate === activeCalendarDay,
+          'day-selected': day && currentDateFilter && day.fullDate.toString() == currentDateFilter.toString(),
           'end-of-book': day && day.endOfBook
         }"
         (click)="clickCalendarDay(day)">

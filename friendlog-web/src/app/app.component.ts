@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   fabColor: string = 'gray';
   fabUrl: string = NEW_ENTRY_URL;
 
+  currentDateFilter: Date;
+
   private lastRow: Row;
   // Only fetched once. Copy, don't mutate.
   allRows: Row[];
@@ -68,6 +70,7 @@ export class AppComponent implements OnInit {
 
   public filterByDate(d: Date) {
     this.reset();
+    this.currentDateFilter = d;
     this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d))
     console.log(this.fabColor)
     this.updateFabColor();
@@ -95,6 +98,7 @@ export class AppComponent implements OnInit {
   }
 
   public reset() {
+    this.currentDateFilter = null;
     this.rows = (
       this.allRows.slice()
       // .slice(allRows.length - 5)
