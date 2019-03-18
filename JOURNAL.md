@@ -58,10 +58,12 @@ deploys encourage me to make small tweaks!)
 
 - Fix z-index bug for multi-book days
 - Changing filter removes "active calendar day" styling
+    - I wonder why I then had to do `.toString()` comparison in the <calendar-view> template instead of `===` like before. Or why didn't `==` work? Check 7e3d8ab
 
 ----
 
 Next (features):
+- [ ] Make "error fetching from DB" not an alert
 - [ ] Refactor: computeWeeks is getting real hairy
 - [ ] Refactor: Sizes and colors
 - [ ] Refactor: calendar styles are getting out of hand (z indexes!!!)
