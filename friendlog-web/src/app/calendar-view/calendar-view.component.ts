@@ -75,6 +75,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
           d: d.getDate(),
           fullDate: d
         } as any;
+        // "today" = the current day we're iterating on
         const todaysEvents = this.eventsByDate[dtos(d)];
         if (todaysEvents) {
           const colors = new Set();
