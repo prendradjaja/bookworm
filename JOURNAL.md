@@ -88,6 +88,7 @@ Next (features):
 - [ ] Bugfix: Changing filter should update (i.e. null out) activeCalendarDay
 - [ ] First-class support for news articles etc
 - [ ] Prefill "other"
+- [ ] fab color maybe makes no sense when filtering by date
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
