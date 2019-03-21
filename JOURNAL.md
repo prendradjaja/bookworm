@@ -52,13 +52,15 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.11:** Color service
 
-## 3/18
+## 3/18-20
 
 **NEXT:**
 
 - Fix z-index bug for multi-book days
 - Changing filter removes "active calendar day" styling
     - I wonder why I then had to do `.toString()` comparison in the <calendar-view> template instead of `===` like before. Or why didn't `==` work? Check 7e3d8ab
+- Prefill "Other"
+    - there's no easy way to tell if it's an "Other" or not, and it doesn't really matter if I just assume everything's an Other, so I did that.
 
 ----
 
@@ -87,7 +89,7 @@ Next (features):
 - [ ] TOC checklist
 - [ ] Bugfix: Changing filter should update (i.e. null out) activeCalendarDay
 - [ ] First-class support for news articles etc
-- [ ] Prefill "other"
+- [x] Prefill "other"
 - [ ] fab color maybe makes no sense when filtering by date
 
 Next (requires my own data entry and/or backend):

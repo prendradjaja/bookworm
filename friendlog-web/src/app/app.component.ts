@@ -92,7 +92,8 @@ export class AppComponent implements OnInit {
     // todo is there a real way of doing this?
     const urlEncodedBook = book.replace(/ /g, '+');
     this.fabColor = this.colorService.getColor(book);
-    let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
+    let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874=__other_option__&entry.688353874.other_option_response='
+    // let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
                + urlEncodedBook);
     this.fabUrl = url;
   }
