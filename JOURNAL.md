@@ -61,6 +61,7 @@ deploys encourage me to make small tweaks!)
     - I wonder why I then had to do `.toString()` comparison in the <calendar-view> template instead of `===` like before. Or why didn't `==` work? Check 7e3d8ab
 - Prefill "Other"
     - there's no easy way to tell if it's an "Other" or not, and it doesn't really matter if I just assume everything's an Other, so I did that.
+- Placeholder for 3+ colors
 
 ----
 

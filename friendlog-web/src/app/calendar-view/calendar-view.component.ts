@@ -87,6 +87,10 @@ export class CalendarViewComponent implements OnInit, OnChanges {
             day.multiColor = true;
             // todo the more frequent one should be on top
             [day.rightColor, day.topColor] = twoItemSetToArray(colors);
+          } else if (colors.size > 2) {
+            day.multiColor = true;
+            day.topColor = getAnyItem(colors);
+            day.rightColor = 'black';
           } else {
             day.color = 'black';
           }
@@ -148,6 +152,16 @@ function twoItemSetToArray<T>(s: Set<T>): T[] {
     let items = [] as T[];
     s.forEach(x => items.push(x));
     return items;
+  }
+}
+
+function getAnyItem<T>(s: Set<T>): T[] {
+  if (s.size < 1) {
+    window.alert('this set is empty')
+  } else {
+    let items = []
+    s.forEach(x => items.push(x));
+    return items[0];
   }
 }
 
