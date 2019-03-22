@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { BackendService, Row } from './backend.service';
-import { ColorService } from './color.service';
+import { Component, OnInit } from "@angular/core";
+import { BackendService, Row } from "./backend.service";
+import { ColorService } from "./color.service";
+import { fromEvent } from "rxjs";
 
-const NEW_ENTRY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform';
+const NEW_ENTRY_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   rows: Row[] = [];
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit {
 
   loading = true;
 
-  fabColor: string = 'gray';
+  fabColor: string = "gray";
   fabUrl: string = NEW_ENTRY_URL;
 
   currentDateFilter: Date;
@@ -26,14 +28,13 @@ export class AppComponent implements OnInit {
   // Only fetched once. Copy, don't mutate.
   allRows: Row[];
 
-  constructor (
+  constructor(
     private backendService: BackendService,
     private colorService: ColorService
   ) {}
 
-  
-
   ngOnInit() {
+    observableFun();
     const cached = this.backendService.getCached();
     if (cached) {
       this.onRowsReceived(cached);
@@ -42,13 +43,13 @@ export class AppComponent implements OnInit {
     this.backendService.get().then(
       allRows => {
         this.loading = false;
-        this.onRowsReceived(allRows)
+        this.onRowsReceived(allRows);
       },
       err => {
-        this.loading = false;  // lol isn't this duplication what .finally is for?
-        const key = window.prompt('Set key (leave blank for no action)');
+        this.loading = false; // lol isn't this duplication what .finally is for?
+        const key = window.prompt("Set key (leave blank for no action)");
         if (key) {
-          localStorage.setItem('bookworm/google-api-key', key);
+          localStorage.setItem("bookworm/google-api-key", key);
           location.reload();
         }
       }
@@ -59,7 +60,6 @@ export class AppComponent implements OnInit {
     this.lastRow = allRows[allRows.length - 1];
     this.allRows = allRows;
     this.reset();
-
   }
 
   public filterByBook(book: string) {
@@ -71,10 +71,10 @@ export class AppComponent implements OnInit {
   public filterByDate(d: Date) {
     this.reset();
     this.currentDateFilter = d;
-    this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d))
-    console.log(this.fabColor)
+    this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d));
+    console.log(this.fabColor);
     this.updateFabColor();
-    console.log(this.fabColor)
+    console.log(this.fabColor);
   }
 
   // todo rename
@@ -90,21 +90,20 @@ export class AppComponent implements OnInit {
 
     const book = this.rows[0].book;
     // todo is there a real way of doing this?
-    const urlEncodedBook = book.replace(/ /g, '+');
+    const urlEncodedBook = book.replace(/ /g, "+");
     this.fabColor = this.colorService.getColor(book);
-    let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874=__other_option__&entry.688353874.other_option_response='
-    // let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
-               + urlEncodedBook);
+    let url =
+      "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874=__other_option__&entry.688353874.other_option_response=" +
+      // let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
+      urlEncodedBook;
     this.fabUrl = url;
   }
 
   public reset() {
     this.currentDateFilter = null;
-    this.rows = (
-      this.allRows.slice()
-      // .slice(allRows.length - 5)
-      // .filter(isNonEmpty)
-    );
+    this.rows = this.allRows.slice();
+    // .slice(allRows.length - 5)
+    // .filter(isNonEmpty)
     this.rows.sort(rowComparator);
     this.updateFabColor();
   }
@@ -124,7 +123,8 @@ function toTimestamp(d: string): number {
 function compare(x, y) {
   if (x < y) {
     return 1;
-  } else { // x > y because of x !== y
+  } else {
+    // x > y because of x !== y
     return -1;
   }
 }
@@ -140,25 +140,41 @@ function rowComparator(a: Row, b: Row): number {
   return compare(aDate, bDate);
 }
 
-
 // todo dedupe these
-                                              // todo real tz handling? moment?
-                                              function dtos(d: Date) {
-                                                // return d.toISOString().split('T')[0];
-                                                const Y = d.getFullYear();
-                                                const M = d.getMonth() + 1;
-                                                const D = d.getDate();
-                                                return `${M}/${D}/${Y}`;
-                                              }
+// todo real tz handling? moment?
+function dtos(d: Date) {
+  // return d.toISOString().split('T')[0];
+  const Y = d.getFullYear();
+  const M = d.getMonth() + 1;
+  const D = d.getDate();
+  return `${M}/${D}/${Y}`;
+}
 
-                                              function stod(s: string) {
-                                                const temp = new Date(s);
-                                                // todo discard time portion? how does this work with tzs?
-                                                return temp;
-                                              }
+function stod(s: string) {
+  const temp = new Date(s);
+  // todo discard time portion? how does this work with tzs?
+  return temp;
+}
 
-                                              function stos(s: string) {
-                                                return dtos(stod(s));
-                                              }
+function stos(s: string) {
+  return dtos(stod(s));
+}
 
 // more stuff goes here
+/*
+
+
+
+
+
+
+
+
+
+
+*/
+
+function observableFun() {
+  const link = document.querySelector("h1 a");
+  fromEvent(link, "click").subscribe(() => console.log("clicked"));
+}
