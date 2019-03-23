@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BackendService, Row } from "./backend.service";
 import { ColorService } from "./color.service";
-import { fromEvent } from "rxjs";
+import { fromEvent, Observable, Observer } from "rxjs";
 
 const NEW_ENTRY_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform";
@@ -175,6 +175,41 @@ function stos(s: string) {
 */
 
 function observableFun() {
+  thisIsAnObservable();
+  creatingMyOwnObservables();
+}
+
+function thisIsAnObservable() {
   const link = document.querySelector("h1 a");
-  fromEvent(link, "click").subscribe(() => console.log("clicked"));
+
+  // so this is an observable. try clicking on "Bookworm" at the top!
+  const x: Observable<Event> = fromEvent(link, "click");
+  x.subscribe(() => console.log("clicked"));
+
+  // Q. why is it that this is allowed? i thought you needed a Subject in order to multicast to many Observers?
+  // or i guess the .subscribe is not an Observer?
+  x.subscribe(() => console.log("second click handler?"));
+}
+
+function creatingMyOwnObservables() {
+  // Q. Observer.next... why is it called Observer? seems like it's the thing being observed, not the thing being observed
+
+  // There's no difference between Observable.create and new Observable
+  // https://stackoverflow.com/questions/45912735/difference-between-new-observable-and-rx-observable-create
+  const y: Observable<number> = Observable.create(o => {
+    o.next(1);
+    o.next(2);
+  });
+  const z: Observable<number> = new Observable(subscriber => {
+    // Q. Why is this called a subscriber?
+    subscriber.next(3);
+    subscriber.next(4);
+  });
+
+  y.subscribe(e => {
+    console.log(e);
+  });
+  z.subscribe(e => {
+    console.log(e);
+  });
 }
