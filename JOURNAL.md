@@ -64,6 +64,10 @@ deploys encourage me to make small tweaks!)
     - there's no easy way to tell if it's an "Other" or not, and it doesn't really matter if I just assume everything's an Other, so I did that.
 - Placeholder for 3+ colors
 
+## 3/24
+
+Learned: For Services and other `@Injectable`s, initialization happens in ctor not oninit https://stackoverflow.com/questions/35110690/ngoninit-not-being-called-when-injectable-class-is-instantiated
+
 
 ----
 
