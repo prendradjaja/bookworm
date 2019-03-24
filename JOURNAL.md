@@ -85,7 +85,7 @@ Next (refactor/cleanup):
 - [ ] Remove app prefix from selectors
 
 Next (main):
-- [ ] Colors: Manually choose all? Use a palette?
+- [ ] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
 - [ ] Group repeated similar posts
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
