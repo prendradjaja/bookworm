@@ -64,6 +64,7 @@ deploys encourage me to make small tweaks!)
     - there's no easy way to tell if it's an "Other" or not, and it doesn't really matter if I just assume everything's an Other, so I did that.
 - Placeholder for 3+ colors
 
+
 ----
 
 Next (meta):
@@ -89,7 +90,7 @@ Next (big):
 - [ ] Integrate page mapper
 
 Next (infra):
-- [ ] Prettier
+- [x] Prettier
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
