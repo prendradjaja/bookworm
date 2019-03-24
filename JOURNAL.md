@@ -66,7 +66,8 @@ deploys encourage me to make small tweaks!)
 
 ## 3/24
 
-Learned: For Services and other `@Injectable`s, initialization happens in ctor not oninit https://stackoverflow.com/questions/35110690/ngoninit-not-being-called-when-injectable-class-is-instantiated
+- Learned: For Services and other `@Injectable`s, initialization happens in ctor not oninit https://stackoverflow.com/questions/35110690/ngoninit-not-being-called-when-injectable-class-is-instantiated
+- Tried using a color palette instead of hash colors, but my color palette was ugly and I still don't know how I would deal with collisions (maybe manual reassignment, just like with hashing?). I have some almost-usable code if I ever want to come up with a better color palette, though.
 
 **v0.1.13:**
 
