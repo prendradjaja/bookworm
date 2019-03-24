@@ -65,41 +65,36 @@ deploys encourage me to make small tweaks!)
 
 ----
 
-Next (features):
+Next (refactor/cleanup):
+- [ ] computeWeeks is getting real hairy
+- [ ] Sizes and colors
+- [ ] Calendar styles are getting out of hand (z indexes!!!)
+
+Next (main):
 - [ ] Make "error fetching from DB" not an alert
-- [ ] Refactor: computeWeeks is getting real hairy
-- [ ] Refactor: Sizes and colors
-- [ ] Refactor: calendar styles are getting out of hand (z indexes!!!)
-- [x] Something for the end of a book
-- [x] Color service
-- [x] Calendar view (`calendar` branch)
-    - [x] Multi-book days
-    - [x] If no book, gray fab
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
-- [ ] Offline mode with Session Workers or App Cache
-- [ ] After creating a new entry, auto-reload until updated
-- [ ] Group by date/book/etc
-- [ ] Integrate page mapper
-- [ ] Tap anywhere on a card to filter?
-- [x] Smart FAB (The color of the most recently read book [or the book you're filtering by] -- this indicates that you're creating an entry for that book specifically)
-    - [ ] Prefill with last read page
-- [ ] Figure out what's up with the font size changing thing (And don't do max-width 400 until you figure that out)
-- [ ] Streak graph
+- [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
 - [ ] Multi-line
 - [ ] TOC checklist
-- [ ] Bugfix: Changing filter should update (i.e. null out) activeCalendarDay
 - [ ] First-class support for news articles etc
-- [x] Prefill "other"
-- [ ] fab color maybe makes no sense when filtering by date
+- [ ] Fab color maybe makes no sense when filtering by date
+- [ ] Integrate page mapper
 
-Next (requires my own data entry and/or backend):
+Next (big):
+- [ ] My own backend
+- [ ] My own data entry
 - [ ] Offline mode with Session Workers or App Cache
-
-Feature wishlist:
-- [ ] Integrate Twilio or something for SMS
-- [ ] Camera & OCR
 
 Next (infra):
 - [x] Almost one-button deploy
 - [ ] Prettier
+
+Next (requires my own data entry and/or backend):
+- [ ] Offline mode with Session Workers or App Cache
+
+Wishlist:
+- [ ] Integrate Twilio or something for SMS
+- [ ] Camera & OCR
+
+See also [ARCHIVE.md](./ARCHIVE.md)
