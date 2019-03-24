@@ -52,10 +52,11 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.11:** Color service
 
-## 3/18-20
+## 3/18-24
 
-**NEXT:**
+**v0.1.12:**
 
+- Line break support (both paragraphs and newlines, unlike Friendlog)
 - Fix z-index bug for multi-book days
 - Changing filter removes "active calendar day" styling
     - I wonder why I then had to do `.toString()` comparison in the <calendar-view> template instead of `===` like before. Or why didn't `==` work? Check 7e3d8ab
@@ -77,7 +78,7 @@ Next (main):
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
-- [ ] Multi-line
+- [x] Line break support
 - [ ] Fab color maybe makes no sense when filtering by date
 
 Next (big):

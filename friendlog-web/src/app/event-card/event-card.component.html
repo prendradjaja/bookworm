@@ -16,5 +16,6 @@
   </div>
 </div>
 <div *ngIf="row.notes">
-  {{row.notes}}
+  <app-long-response-formatter [text]="row.notes">
+  </app-long-response-formatter>
 </div>
