@@ -19,6 +19,8 @@
                (filterByDate)="filterByDate($event)">
 </calendar-view>
 
+<!-- <div *ngFor="let color of colorService.palette" [style.background-color]="colorService.hslToRgb(color)">xxx</div> -->
+
 <div id="cards">
   <app-event-card *ngFor="let row of rows"
                   [row]="row"
