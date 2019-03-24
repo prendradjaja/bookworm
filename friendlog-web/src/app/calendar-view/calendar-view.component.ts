@@ -69,44 +69,49 @@ export class CalendarViewComponent implements OnInit, OnChanges {
     while (d.getTime() < new Date().getTime()) {
       const week = [];
       for (let i = 0; i < 7; i++) {
-        // todo add typing to the day object
-        const day = {
-          d: d.getDate(),
-          fullDate: d
-        } as any;
-        // "today" = the current day we're iterating on
-        const todaysEvents = this.eventsByDate[dtos(d)];
-        if (todaysEvents) {
-          const colors = new Set();
-          todaysEvents.forEach(row => {
-            colors.add(this.colorService.getColor(row.book))
-          });
-          if (colors.size === 1) {
-            day.color = oneItemSetToItem(colors);
-          } else if (colors.size === 2) {
-            day.multiColor = true;
-            // todo the more frequent one should be on top
-            [day.rightColor, day.topColor] = twoItemSetToArray(colors);
-          } else if (colors.size > 2) {
-            day.multiColor = true;
-            day.topColor = getAnyItem(colors);
-            day.rightColor = 'black';
-          } else {
-            day.color = 'black';
-          }
-          day.numEvents = todaysEvents.length;
-
-          if (anyIsEnd(todaysEvents)) {
-            day.endOfBook = true;
-          }
-        } else {
-          day.numEvents = 0;
-        }
-        week.push(day);
+        week.push(this.makeDay(d));
         d = add(d, 1);
       }
       this.weeks.push(week);
     }
+  }
+
+  private makeDay(d: Date) {
+    // todo add typing to the day object
+    const day = {
+      d: d.getDate(),
+      fullDate: d
+    } as any;
+
+    // "today" = the current day we're iterating on
+    const todaysEvents = this.eventsByDate[dtos(d)];
+    if (todaysEvents) {
+      const colors = new Set();
+      todaysEvents.forEach(row => {
+        colors.add(this.colorService.getColor(row.book))
+      });
+      if (colors.size === 1) {
+        day.color = oneItemSetToItem(colors);
+      } else if (colors.size === 2) {
+        day.multiColor = true;
+        // todo the more frequent one should be on top
+        [day.rightColor, day.topColor] = twoItemSetToArray(colors);
+      } else if (colors.size > 2) {
+        day.multiColor = true;
+        day.topColor = getAnyItem(colors);
+        day.rightColor = 'black';
+      } else {
+        day.color = 'black';
+      }
+      day.numEvents = todaysEvents.length;
+
+      if (anyIsEnd(todaysEvents)) {
+        day.endOfBook = true;
+      }
+    } else {
+      day.numEvents = 0;
+    }
+    return day;
   }
 }
 

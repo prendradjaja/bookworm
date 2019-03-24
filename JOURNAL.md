@@ -65,8 +65,11 @@ deploys encourage me to make small tweaks!)
 
 ----
 
+Next (meta):
+- [ ] Move inline todos into this list
+
 Next (refactor/cleanup):
-- [ ] computeWeeks is getting real hairy
+- [ ] makeDay could be simpler
 - [ ] Sizes and colors
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
 
@@ -87,7 +90,6 @@ Next (big):
 - [ ] Offline mode with Session Workers or App Cache
 
 Next (infra):
-- [x] Almost one-button deploy
 - [ ] Prettier
 
 Next (requires my own data entry and/or backend):
