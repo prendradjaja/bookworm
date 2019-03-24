@@ -68,6 +68,8 @@ deploys encourage me to make small tweaks!)
 
 Learned: For Services and other `@Injectable`s, initialization happens in ctor not oninit https://stackoverflow.com/questions/35110690/ngoninit-not-being-called-when-injectable-class-is-instantiated
 
+**v0.1.13:** Manually reassign color for title "The Gamer" -- too close to "Norse Mythology"
+
 
 ----
 
@@ -83,6 +85,7 @@ Next (refactor/cleanup):
 - [ ] Remove app prefix from selectors
 
 Next (main):
+- [ ] Colors: Manually choose all? Use a palette?
 - [ ] Group repeated similar posts
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
