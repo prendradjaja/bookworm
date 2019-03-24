@@ -10,7 +10,7 @@ export class ColorService {
    * Adapted from https://stackoverflow.com/a/16348977
    */
   public getColor(book: string): string {
-    if (book === "The Gamer") {
+    if (book === "The Gamer (s1)") {
       return "#5aa8c6";
     }
     var hash = 0;
