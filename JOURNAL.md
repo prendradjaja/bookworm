@@ -81,6 +81,7 @@ Next (meta):
 - [ ] If I document exactly how to repro the font size changing bug, I can defer fixing it and immediately do max-width 400
 
 Next (refactor/cleanup):
+- [ ] Prettier everything
 - [ ] makeDay could be simpler
 - [ ] Sizes and colors
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
@@ -95,6 +96,7 @@ Next (main):
 - [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
 - [x] Line break support
 - [ ] Fab color maybe makes no sense when filtering by date
+    - [ ] Then remove "New entry"
 
 Next (big):
 - [ ] My own backend
