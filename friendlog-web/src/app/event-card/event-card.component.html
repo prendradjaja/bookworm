@@ -1,21 +1,23 @@
-<div *ngIf="row.book || row.createdAt || row.start || row.end">
-  <div *ngIf="row.book">
-    <!-- Should this be a button or a link? -->
-    <!-- How does (click)= work? <a> isn't an Angular component... is it? -->
-    <a href="#" *ngIf="row.book" class="book" (click)="handleClick(row.book)" [style.color]="getColor()">
-      {{row.book}}
-    </a>
-    <span *ngIf="row.start || row.end">
-      <span *ngIf="row.start">{{row.start}}</span>
-      <span *ngIf="row.start && row.end">&ndash;</span>
-      <span *ngIf="row.end">{{row.end}}</span>
-    </span>
+<div class="event-card-container" [style.border-left-color]="getColor()">
+  <div *ngIf="row.book || row.createdAt || row.start || row.end">
+    <div *ngIf="row.book">
+      <!-- Should this be a button or a link? -->
+      <!-- How does (click)= work? <a> isn't an Angular component... is it? -->
+      <a href="#" *ngIf="row.book" class="book" (click)="handleClick(row.book)" [style.color]="getColor()">
+        {{row.book}}
+      </a>
+      <span *ngIf="row.start || row.end">
+        <span *ngIf="row.start">{{row.start}}</span>
+        <span *ngIf="row.start && row.end">&ndash;</span>
+        <span *ngIf="row.end">{{row.end}}</span>
+      </span>
+    </div>
+    <div *ngIf="row.createdAt" class="timestamp">
+      {{row.createdAt}}
+    </div>
   </div>
-  <div *ngIf="row.createdAt" class="timestamp">
-    {{row.createdAt}}
+  <div *ngIf="row.notes">
+    <app-long-response-formatter [text]="row.notes">
+    </app-long-response-formatter>
   </div>
-</div>
-<div *ngIf="row.notes">
-  <app-long-response-formatter [text]="row.notes">
-  </app-long-response-formatter>
 </div>

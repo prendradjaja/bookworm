@@ -1,24 +1,25 @@
-:host {
-    display: block;
-    border: gray 1px solid;
-    width: 300px;
-    padding: 8px;
-    margin-bottom: 8px;
+:host .event-card-container {
+  display: block;
+  border: gray 1px solid;
+  border-left-width: 6px;
+  width: 300px;
+  padding: 8px;
+  margin-bottom: 8px;
 
-    & > div:not(:last-child) {
-        margin-bottom: 6px;
-    }
+  & > div:not(:last-child) {
+    margin-bottom: 6px;
+  }
 
-    .book {
-        font-weight: bold;
-    }
-    .timestamp {
-        color: #bbbbbb;
-        font-size: 12px;
-    }
+  .book {
+    font-weight: bold;
+  }
+  .timestamp {
+    color: #bbbbbb;
+    font-size: 12px;
+  }
 }
 
 a {
-    color: #184489;
-    text-decoration: none;
+  color: #184489;
+  text-decoration: none;
 }
