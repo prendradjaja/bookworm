@@ -3,3 +3,6 @@ I'm going to make my own data entry and/or backend anyway:
 
 Other
 - [ ] Streak graph -- The calendar works well
+
+Needs scoping, or might not even be particularly useful
+- [ ] First-class support for news articles etc

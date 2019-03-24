@@ -74,20 +74,18 @@ Next (refactor/cleanup):
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
 
 Next (main):
-- [ ] Make "error fetching from DB" not an alert
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
 - [ ] Multi-line
-- [ ] TOC checklist
-- [ ] First-class support for news articles etc
 - [ ] Fab color maybe makes no sense when filtering by date
-- [ ] Integrate page mapper
 
 Next (big):
 - [ ] My own backend
 - [ ] My own data entry
 - [ ] Offline mode with Session Workers or App Cache
+- [ ] TOC checklist
+- [ ] Integrate page mapper
 
 Next (infra):
 - [ ] Prettier
