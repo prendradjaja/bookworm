@@ -69,13 +69,17 @@ deploys encourage me to make small tweaks!)
 
 Next (meta):
 - [ ] Move inline todos into this list
+- [ ] If I document exactly how to repro the font size changing bug, I can defer fixing it and immediately do max-width 400
 
 Next (refactor/cleanup):
 - [ ] makeDay could be simpler
 - [ ] Sizes and colors
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
+- [ ] Rename event card
+- [ ] Remove app prefix from selectors
 
 Next (main):
+- [ ] Group repeated similar posts
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
 - [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
