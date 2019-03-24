@@ -1,8 +1,8 @@
 <!-- Is there a way to combine the below component into this one? -->
 <p *ngFor="let para of paragraphs">
-    <ng-container *ngFor="let line of para">
-        {{line}}
-        <br/>
-        <!-- I'm surprised that I don't need to exclude the last BR... -->
-    </ng-container>
+  <ng-container *ngFor="let line of para">
+    {{line}}
+    <br/>
+    <!-- I'm surprised that I don't need to exclude the last BR... -->
+  </ng-container>
 </p>
