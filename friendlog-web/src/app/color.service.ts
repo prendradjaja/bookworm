@@ -28,7 +28,7 @@ export class ColorService {
   }
 
   private createPalette() {
-    // should this be in init or constructor?
+    // from https://coolors.co/e80606-f7ad00-7fb800-007ed8-8911aa
     const mainColorsRaw = `
         $color1: hsla(0%, 95%, 47%, 1);
         $color2: hsla(42%, 100%, 48%, 1);
