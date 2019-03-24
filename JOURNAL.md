@@ -68,7 +68,10 @@ deploys encourage me to make small tweaks!)
 
 Learned: For Services and other `@Injectable`s, initialization happens in ctor not oninit https://stackoverflow.com/questions/35110690/ngoninit-not-being-called-when-injectable-class-is-instantiated
 
-**v0.1.13:** Manually reassign color for title "The Gamer" -- too close to "Norse Mythology"
+**v0.1.13:**
+
+- Left border
+- Manually reassign color for title "The Gamer" -- too close to "Norse Mythology"
 
 
 ----
