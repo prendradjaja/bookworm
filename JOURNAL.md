@@ -98,8 +98,8 @@ Next (main):
     - [ ] And then link to responses sheet
 - [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
 - [x] Line break support
-- [ ] Fab color maybe makes no sense when filtering by date
-    - [ ] Then remove "New entry"
+- [ ] Rethink fab color when filtering by date. (Maybe: Fab color code remains unchanged, but change multi-color days so the top color is the most recent entry?)
+- [ ] Remove "New entry"?
 
 Next (big):
 - [ ] My own backend
