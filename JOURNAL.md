@@ -100,6 +100,7 @@ Next (main):
 - [x] Line break support
 - [ ] Rethink fab color when filtering by date. (Maybe: Fab color code remains unchanged, but change multi-color days so the top color is the most recent entry?)
 - [ ] Remove "New entry"?
+- [ ] Book cover images
 
 Next (big):
 - [ ] My own backend
