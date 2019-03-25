@@ -90,6 +90,7 @@ Next (refactor/cleanup):
 - [ ] Remove app prefix from selectors
 
 Next (main):
+- [ ] Calendar: Don't show future dates
 - [ ] "When" support
 - [ ] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
 - [ ] Group repeated similar posts
