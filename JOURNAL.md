@@ -74,6 +74,8 @@ deploys encourage me to make small tweaks!)
 - Left border
 - Manually reassign color for title "The Gamer" -- too close to "Norse Mythology"
 
+**v0.1.14:** Custom colors!
+
 
 ----
 
