@@ -100,7 +100,8 @@ Next (refactor/cleanup):
 Next (main):
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)
 - [ ] "When" support
-- [ ] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
+- [x] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
+- [ ] Better handling for light colors
 - [ ] Group repeated similar posts
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
