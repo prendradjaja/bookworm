@@ -45,7 +45,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
     if (this.showFullCalendar) {
       return this.weeks;
     }
-    return this.weeks.slice(this.weeks.length - 2);
+    return this.weeks.slice(this.weeks.length - 3);
   }
 
   toggleCalendar() {
@@ -69,24 +69,30 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   }
 
   private computeWeeks() {
+    console.log("----------");
     const startDate = new Date(2019, 0, 14);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     let d = startDate;
     this.weeks = [];
-    while (d.getTime() < new Date().getTime()) {
+    while (d.getTime() < now.getTime()) {
       const week = [];
       for (let i = 0; i < 7; i++) {
-        week.push(this.makeDay(d));
+        console.log(d, "///", today);
+        const future = d.getTime() > today.getTime();
+        week.push(this.makeDay(d, future));
         d = add(d, 1);
       }
       this.weeks.push(week);
     }
   }
 
-  private makeDay(d: Date) {
+  private makeDay(d: Date, future: boolean) {
     // todo add typing to the day object
     const day = {
       d: d.getDate(),
-      fullDate: d
+      fullDate: d,
+      future: future
     } as any;
 
     // "today" = the current day we're iterating on
@@ -155,7 +161,8 @@ function stos(s: string) {
 
 function add(d: Date, days) {
   const DAY_IN_MS = 1000 * 60 * 60 * 24;
-  return new Date(d.getTime() + DAY_IN_MS * days);
+  const foo = new Date(d.getTime() + DAY_IN_MS * days);
+  return new Date(foo.getFullYear(), foo.getMonth(), foo.getDate());
 }
 
 function oneItemSetToItem<T>(s: Set<T>): T {

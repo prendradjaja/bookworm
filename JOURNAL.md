@@ -96,6 +96,7 @@ Next (refactor/cleanup):
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
 - [ ] Rename event card
 - [ ] Remove app prefix from selectors
+- [ ] Use moment (also fixes timezone bug with <calendar-view>#add
 
 Next (main):
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)

@@ -5,7 +5,8 @@
         [style.color]="day.color || day.multiColor ? 'white' : '#777777'"
         [ngClass]="{
           'day-selected': day && currentDateFilter && day.fullDate.toString() == currentDateFilter.toString(),
-          'end-of-book': day && day.endOfBook
+          'end-of-book': day && day.endOfBook,
+          'future': day && day.future
         }"
         (click)="clickCalendarDay(day)">
       <div *ngIf="day.multiColor"
