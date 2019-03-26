@@ -78,7 +78,8 @@ export class AppComponent implements OnInit {
   // todo rename
   private updateFabColor() {
     // When not filtering, use the first book
-    // When filtering, use the book you're filtering by (which, of course, will also be the first book)
+    // When filtering by book, use the book you're filtering by (which, of course, will also be the first book)
+    // When filtering by date, use the most recent entry's book (which, again, will of course be the first book)
     // TODO: If you try to prefill with an invalid book name, it just doesn't choose a book. Maybe prefill the "other" instead? How could I accomplish that?
 
     if (this.rows.length === 0 || !this.rows[0].book) {

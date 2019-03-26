@@ -99,9 +99,22 @@ export class CalendarViewComponent implements OnInit, OnChanges {
       if (colors.size === 1) {
         day.color = oneItemSetToItem(colors);
       } else if (colors.size === 2) {
+        // topColor is the color of the last (most recent) entry on this day
+
+        // this computation of lastBook is dependent on db rows being sorted by createdAt
+        const lastBook = todaysEvents[todaysEvents.length - 1].book;
+        const lastColor = this.colorService.getColor(lastBook);
         day.multiColor = true;
         // todo the more frequent one should be on top
-        [day.rightColor, day.topColor] = twoItemSetToArray(colors);
+        const [color1, color2] = twoItemSetToArray(colors);
+        if (color1 === lastColor) {
+          [day.topColor, day.rightColor] = [color1, color2];
+        } else if (color2 === lastColor) {
+          [day.topColor, day.rightColor] = [color2, color1];
+        } else {
+          [day.topColor, day.rightColor] = [color1, color2];
+          console.warn("Neither color is lastColor");
+        }
       } else if (colors.size > 2) {
         day.multiColor = true;
         day.topColor = getAnyItem(colors);
