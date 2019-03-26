@@ -119,6 +119,7 @@ Next (big):
 
 Next (infra):
 - [x] Prettier
+- [ ] Show version number and/or commit hash
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
