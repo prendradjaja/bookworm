@@ -84,7 +84,9 @@ Next (meta):
 - [ ] If I document exactly how to repro the font size changing bug, I can defer fixing it and immediately do max-width 400
 
 Next (refactor/cleanup):
-- [ ] Prettier everything
+- [x] Prettier all .ts
+- [ ] Prettier all .scss
+- [ ] Can I prettier .html?
 - [ ] makeDay could be simpler
 - [ ] Sizes and colors
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
