@@ -44,11 +44,13 @@ export class AppComponent implements OnInit {
         this.onRowsReceived(allRows);
       },
       err => {
-        this.loading = false; // lol isn't this duplication what .finally is for?
-        const key = window.prompt("Set key (leave blank for no action)");
-        if (key) {
-          localStorage.setItem("bookworm/google-api-key", key);
-          location.reload();
+        if (!this.backendService.isOfflineOnly()) {
+          this.loading = false; // lol isn't this duplication what .finally is for?
+          const key = window.prompt("Set key (leave blank for no action)");
+          if (key) {
+            localStorage.setItem("bookworm/google-api-key", key);
+            location.reload();
+          }
         }
       }
     );

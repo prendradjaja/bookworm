@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 
 import { HttpClient } from "@angular/common/http";
 
+export const offlineOnly = false;
+
 @Injectable({
   providedIn: "root"
 })
@@ -9,6 +11,10 @@ export class BackendService {
   private parser = new Parser();
 
   constructor(private http: HttpClient) {}
+
+  public isOfflineOnly() {
+    return offlineOnly;
+  }
 
   // todo instead of making this silly get/getCached interface, use an observable(??)
   public getCached() {
@@ -21,6 +27,9 @@ export class BackendService {
 
   // todo add return type for this and other get methods
   public get() {
+    if (offlineOnly) {
+      return Promise.reject();
+    }
     const API_KEY = localStorage.getItem("bookworm/google-api-key");
     if (API_KEY) {
       const RANGE = "A1:G500";
@@ -54,6 +63,9 @@ export class BackendService {
   }
 
   public getColors() {
+    if (offlineOnly) {
+      return Promise.reject();
+    }
     const API_KEY = localStorage.getItem("bookworm/google-api-key");
     if (API_KEY) {
       const RANGE = "Colors!A1:B500";
