@@ -12,6 +12,8 @@
   </header>
   <a [attr.href]="newEntryUrl">New entry</a>
   <span *ngIf="loading" id="loading"> (Loading...)</span>
+  &nbsp;
+  <span *ngIf="backendService.isOfflineOnly()" id="offline-only">>> OFFLINE ONLY <<</span>
 </div>
 
 <calendar-view [allRows]="allRows"
