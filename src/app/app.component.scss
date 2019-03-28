@@ -1,3 +1,5 @@
+$z-fab: 40;
+
 :host {
   padding-left: 12px;
   padding-right: 12px;
@@ -51,6 +53,7 @@ a#new-entry-fab {
   position: fixed;
   bottom: $offset;
   right: $offset;
+  z-index: $z-fab;
 
   background: #dddddd;
   color: white;

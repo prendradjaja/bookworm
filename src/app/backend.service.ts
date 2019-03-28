@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 
 import { HttpClient } from "@angular/common/http";
 
-export const offlineOnly = false;
+export const offlineOnly = true;
 
 @Injectable({
   providedIn: "root"
