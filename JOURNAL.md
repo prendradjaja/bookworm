@@ -80,6 +80,10 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.15:** Top color (for 2-book days) is the first book
 
+## 3/27
+
+**v0.1.16:** Fix directory structure
+
 
 ----
 

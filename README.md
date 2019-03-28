@@ -14,14 +14,11 @@
 ## Installation
 
 - clone
-- From git repo root: `npm install`
-- From git repo root: `cd friendlog-web/ && npm install` (This is the
-  "Angular project directory")
+- npm install
 
 ## Development
 
-- From the Angular project directory (the nested `friendlog-web` directory),
-  run `npx ng serve`
+- ng serve
 
 ## Deployment
 
