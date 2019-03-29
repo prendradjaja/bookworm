@@ -96,6 +96,10 @@ Next (meta):
 - [ ] Move inline todos into this list
 - [ ] If I document exactly how to repro the font size changing bug, I can defer fixing it and immediately do max-width 400
 
+Next (bugs):
+- [ ] On load: "ERROR Error: Uncaught (in promise): [object Undefined]"
+- [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
+
 Next (refactor/cleanup):
 - [x] Prettier all .ts
 - [ ] Prettier all .scss
@@ -115,7 +119,6 @@ Next (main):
 - [ ] Group repeated similar posts
 - [ ] Keep all URLs secret (like Friendlog)
     - [ ] And then link to responses sheet
-- [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
 - [x] Line break support
 - [x] Rethink fab color when filtering by date. (Maybe: Fab color code remains unchanged, but change multi-color days so the top color is the most recent entry?)
 - [ ] Remove "New entry"?
