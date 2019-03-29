@@ -97,7 +97,7 @@ deploys encourage me to make small tweaks!)
 - Don't show "Loading..." when offline
 - Everything in one line
 
-**NEXT:**
+**v0.1.19:**
 
 - Don't scroll to top (todo: fix other places)
 - Max-width 400
