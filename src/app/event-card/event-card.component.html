@@ -3,7 +3,7 @@
     <div *ngIf="row.book">
       <!-- Should this be a button or a link? -->
       <!-- How does (click)= work? <a> isn't an Angular component... is it? -->
-      <a href="#" *ngIf="row.book" class="book" (click)="handleClick(row.book)" [style.color]="getColor()">
+      <a style="cursor: pointer" *ngIf="row.book" class="book" (click)="handleClick(row.book)" [style.color]="getColor()">
         {{row.book}}
       </a>
       <span *ngIf="row.start || row.end">
