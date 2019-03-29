@@ -1,9 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BackendService, Row } from "./backend.service";
 import { ColorService } from "./color.service";
-
-const NEW_ENTRY_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform";
+import { SecretsService } from "./secrets.service";
 
 @Component({
   selector: "app-root",
@@ -12,14 +10,14 @@ const NEW_ENTRY_URL =
 })
 export class AppComponent implements OnInit {
   rows: Row[] = [];
-  newEntryUrl = NEW_ENTRY_URL;
+  newEntryUrl: string;
 
   exampleRowFull: Row;
 
   loading = true;
 
   fabColor: string = "gray";
-  fabUrl: string = NEW_ENTRY_URL;
+  fabUrl: string;
 
   currentDateFilter: Date;
 
@@ -28,11 +26,15 @@ export class AppComponent implements OnInit {
   allRows: Row[];
 
   constructor(
-    private backendService: BackendService,
-    private colorService: ColorService
+    public backendService: BackendService,
+    private colorService: ColorService,
+    private secretsService: SecretsService
   ) {}
 
   ngOnInit() {
+    this.newEntryUrl = `https://docs.google.com/forms/d/e/${this.secretsService.getFormId()}/viewform`;
+    this.fabUrl = this.newEntryUrl;
+
     const cached = this.backendService.getCached();
     if (cached) {
       this.onRowsReceived(cached);
@@ -44,12 +46,14 @@ export class AppComponent implements OnInit {
         this.onRowsReceived(allRows);
       },
       err => {
-        this.loading = false; // lol isn't this duplication what .finally is for?
-        const key = window.prompt("Set key (leave blank for no action)");
-        if (key) {
-          localStorage.setItem("bookworm/google-api-key", key);
-          location.reload();
-        }
+        // if (!this.backendService.isOfflineOnly()) {
+        //   this.loading = false; // lol isn't this duplication what .finally is for?
+        //   const key = window.prompt("Set key (leave blank for no action)");
+        //   if (key) {
+        //     localStorage.setItem("bookworm/google-api-key", key);
+        //     location.reload();
+        //   }
+        // }
       }
     );
   }
@@ -91,11 +95,9 @@ export class AppComponent implements OnInit {
     // todo is there a real way of doing this?
     const urlEncodedBook = book.replace(/ /g, "+");
     this.fabColor = this.colorService.getColor(book);
-    let url =
-      "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874=__other_option__&entry.688353874.other_option_response=" +
-      // let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
-      urlEncodedBook;
-    this.fabUrl = url;
+    const questionId = this.secretsService.getFormBookQuestionId();
+    let url = `?usp=pp_url&entry.${questionId}=__other_option__&entry.${questionId}.other_option_response=${urlEncodedBook}`;
+    this.fabUrl = this.newEntryUrl + url;
   }
 
   public reset() {

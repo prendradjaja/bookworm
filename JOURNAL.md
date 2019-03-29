@@ -84,6 +84,11 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.16:** Fix directory structure
 
+**NEXT:**
+
+- (development only) offlineOnly mode
+- Fix fab z-index
+
 
 ----
 
@@ -100,6 +105,7 @@ Next (refactor/cleanup):
 - [ ] Calendar styles are getting out of hand (z indexes!!!)
 - [ ] Rename event card
 - [ ] Remove app prefix from selectors
+- [ ] Move all z-indexes to one file
 
 Next (main):
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)
@@ -125,6 +131,8 @@ Next (big):
 Next (infra):
 - [x] Prettier
 - [ ] Show version number and/or commit hash
+- [ ] Rename local repo dir bookworm-2 -> bookworm and update deploy.sh
+- [ ] Use ngcli ghpages
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
