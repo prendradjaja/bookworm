@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
 import { HttpClient } from "@angular/common/http";
+import { SecretsService } from "./secrets.service";
 
 export const offlineOnly = false;
 
@@ -10,7 +11,10 @@ export const offlineOnly = false;
 export class BackendService {
   private parser = new Parser();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private secretsService: SecretsService
+  ) {}
 
   public isOfflineOnly() {
     return offlineOnly;
@@ -30,10 +34,10 @@ export class BackendService {
     if (offlineOnly) {
       return Promise.reject();
     }
-    const API_KEY = localStorage.getItem("bookworm/google-api-key");
+    const API_KEY = this.secretsService.getApiKey();
     if (API_KEY) {
       const RANGE = "A1:G500";
-      const SPREADSHEET_ID = "1dZGi9Vw5ReO3Lh2ebosuA6U0lxU71DqeavLuOudhMBI";
+      const SPREADSHEET_ID = this.secretsService.getSheetId();
       const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
       return this.http
         .get(url)
@@ -66,10 +70,10 @@ export class BackendService {
     if (offlineOnly) {
       return Promise.reject();
     }
-    const API_KEY = localStorage.getItem("bookworm/google-api-key");
+    const API_KEY = this.secretsService.getApiKey();
     if (API_KEY) {
       const RANGE = "Colors!A1:B500";
-      const SPREADSHEET_ID = "1dZGi9Vw5ReO3Lh2ebosuA6U0lxU71DqeavLuOudhMBI";
+      const SPREADSHEET_ID = this.secretsService.getSheetId();
       const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
       return this.http
         .get(url)
