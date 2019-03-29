@@ -110,7 +110,7 @@ Next (bugs):
 
 Next (refactor/cleanup):
 - [x] Prettier all .ts
-- [ ] Prettier all .scss
+- [x] Prettier all .scss
 - [ ] Can I prettier .html?
 - [ ] makeDay could be simpler
 - [ ] Sizes and colors
@@ -118,6 +118,7 @@ Next (refactor/cleanup):
 - [ ] Rename event card
 - [ ] Remove app prefix from selectors
 - [ ] Move all z-indexes to one file
+- [ ] moment, lodash
 
 Next (main):
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)
@@ -125,11 +126,11 @@ Next (main):
 - [x] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
 - [ ] Better handling for light colors
 - [ ] Group repeated similar posts
-- [ ] Keep all URLs secret (like Friendlog)
-    - [ ] And then link to responses sheet
+- [x] Keep all URLs secret (like Friendlog)
+    - [x] And then link to responses sheet
 - [x] Line break support
 - [x] Rethink fab color when filtering by date. (Maybe: Fab color code remains unchanged, but change multi-color days so the top color is the most recent entry?)
-- [ ] Remove "New entry"?
+- [x] Remove "New entry"?
 - [ ] Book cover images
 
 Next (big):
