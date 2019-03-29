@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { Row } from "../backend.service";
 import { ColorService } from "../color.service";
+import { ConfigService } from "../config.service";
 
 @Component({
   selector: "calendar-view",
@@ -22,10 +23,13 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   @Output() filterByDate = new EventEmitter<Date>();
 
   weeks = [];
-  showFullCalendar = false;
+  showFullCalendar = true;
   private eventsByDate: { [date: string]: Row[] };
 
-  constructor(private colorService: ColorService) {}
+  constructor(
+    private colorService: ColorService,
+    private configService: ConfigService
+  ) {}
 
   ngOnInit() {
     const foos = (window["cals"] = window["cals"] || []); // ptodo-debug
@@ -69,7 +73,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   }
 
   private computeWeeks() {
-    const startDate = new Date(2019, 0, 14);
+    const startDate = this.configService.getCalendarStartDate();
     let d = startDate;
     this.weeks = [];
     while (d.getTime() < new Date().getTime()) {
