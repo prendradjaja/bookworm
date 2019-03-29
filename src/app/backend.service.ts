@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { SecretsService } from "./secrets.service";
 
-export const offlineOnly = false;
+const offlineOnly = false;
 
 @Injectable({
   providedIn: "root"
