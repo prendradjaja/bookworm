@@ -131,6 +131,8 @@ Next (big):
 Next (infra):
 - [x] Prettier
 - [ ] Show version number and/or commit hash
+- [ ] Rename local repo dir bookworm-2 -> bookworm and update deploy.sh
+- [ ] Use ngcli ghpages
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
