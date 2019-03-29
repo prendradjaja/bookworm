@@ -4,6 +4,29 @@ $z-multi-color: 10;
 $z-end-of-book: 20;
 $z-number-and-dots: 30;
 
+div.grid {
+  max-width: 400px;
+  .row {
+    display: flex; // No idea why, but this seems to get rid of spacing btwn rows
+  }
+  .cell {
+    display: inline-block;
+    $size: 100% / 3;
+    width: $size;
+
+    // These two lines are the key ingredient from https://iamsteve.me/blog/entry/how-to-flexible-squares-with-css
+    padding-bottom: $size;
+    height: 0;
+
+    .cell-contents {
+      border: 2px black solid;
+      background: white;
+      height: 100%; // Doesn't work because parent height is actually padding
+      width: 100%; // Not actually needed
+    }
+  }
+}
+
 table.calendar-view {
   margin-top: 24px;
   border-spacing: 0;
