@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   allRows: Row[];
 
   constructor(
-    private backendService: BackendService,
+    public backendService: BackendService,
     private colorService: ColorService
   ) {}
 
