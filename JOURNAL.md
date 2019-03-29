@@ -101,6 +101,7 @@ deploys encourage me to make small tweaks!)
 
 - Don't scroll to top (todo: fix other places)
 - Max-width 400
+- Center calendar
 
 
 ----
@@ -139,6 +140,7 @@ Next (main):
 - [ ] Book cover images
 
 Next (big):
+- [ ] UI redesign
 - [ ] My own backend
 - [ ] My own data entry
 - [ ] Offline mode with Session Workers or App Cache
