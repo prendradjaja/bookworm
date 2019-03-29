@@ -19,4 +19,4 @@ cd $DIR_BOOKWORM_GHPAGES
 git add .
 git commit -m "$PACKAGE_VERSION(+)"
 git show --name-status
-# git push
+git push
