@@ -15,6 +15,13 @@ header {
   }
 }
 
+#below-header {
+  span:not(:last-child)::after {
+    content: " · ";
+    color: gray;
+  }
+}
+
 #offline-only {
   font-weight: bold;
   background: orange;

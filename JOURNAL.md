@@ -89,6 +89,14 @@ deploys encourage me to make small tweaks!)
 - (development only) offlineOnly mode
 - Fix fab z-index
 
+## 3/29
+
+**v0.1.18:** Redo topnav:
+
+- Add link to responses sheet
+- Don't show "Loading..." when offline
+- Everything in one line
+
 
 ----
 

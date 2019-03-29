@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   fabColor: string = "gray";
   fabUrl: string;
 
+  sheetUrl: string;
+
   currentDateFilter: Date;
 
   private lastRow: Row;
@@ -34,6 +36,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.newEntryUrl = `https://docs.google.com/forms/d/e/${this.secretsService.getFormId()}/viewform`;
     this.fabUrl = this.newEntryUrl;
+    const sheetId = this.secretsService.getSheetId();
+    this.sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/edit`;
 
     const cached = this.backendService.getCached();
     if (cached) {

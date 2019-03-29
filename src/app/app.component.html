@@ -6,15 +6,18 @@
     <h1>
       <a href="#" (click)="reset()">Bookworm</a>
     </h1>
+  </header>
+  <div id="below-header">
     <span>
       <a href="https://github.com/prendradjaja/bookworm">GitHub</a>
     </span>
-  </header>
-  <a [attr.href]="newEntryUrl">New entry</a>
-  <span *ngIf="loading" id="loading"> (Loading...)</span>
-  &nbsp;
-  <!-- Maybe shouldn't talk to service or call method from template? -->
-  <span *ngIf="backendService.isOfflineOnly()" id="offline-only">>> OFFLINE ONLY <<</span>
+    <span *ngIf="sheetUrl">
+      <a [attr.href]="sheetUrl">Sheet</a>
+    </span>
+    <span *ngIf="loading && !backendService.isOfflineOnly()" id="loading">Loading...</span>
+    <!-- Maybe shouldn't talk to service or call method from template? -->
+    <span *ngIf="backendService.isOfflineOnly()" id="offline-only">OFFLINE</span>
+  </div>
 </div>
 
 <calendar-view [allRows]="allRows"
