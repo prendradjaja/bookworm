@@ -84,7 +84,7 @@ deploys encourage me to make small tweaks!)
 
 **v0.1.16:** Fix directory structure
 
-**NEXT:**
+**v0.1.17:**
 
 - (development only) offlineOnly mode
 - Fix fab z-index
