@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "friendlog-web": {
+    "bookworm": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/friendlog-web",
+            "outputPath": "dist/bookworm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "friendlog-web:build"
+            "browserTarget": "bookworm:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "friendlog-web:build:production"
+              "browserTarget": "bookworm:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "friendlog-web:build"
+            "browserTarget": "bookworm:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "friendlog-web-e2e": {
+    "bookworm-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "friendlog-web:serve"
+            "devServerTarget": "bookworm:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "friendlog-web:serve:production"
+              "devServerTarget": "bookworm:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "friendlog-web"
+  "defaultProject": "bookworm"
 }
