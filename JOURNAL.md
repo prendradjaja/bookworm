@@ -133,6 +133,7 @@ Next (infra):
 - [ ] Show version number and/or commit hash
 - [ ] Rename local repo dir bookworm-2 -> bookworm and update deploy.sh
 - [ ] Use ngcli ghpages
+- [ ] Try other hosting (Firebase Hosting?)
 
 Next (requires my own data entry and/or backend):
 - [ ] Offline mode with Session Workers or App Cache
