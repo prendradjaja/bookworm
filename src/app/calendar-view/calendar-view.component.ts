@@ -23,7 +23,7 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   @Output() filterByDate = new EventEmitter<Date>();
 
   weeks = [];
-  showFullCalendar = true;
+  showFullCalendar = false;
   private eventsByDate: { [date: string]: Row[] };
 
   constructor(
