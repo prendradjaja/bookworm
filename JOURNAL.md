@@ -108,11 +108,10 @@ deploys encourage me to make small tweaks!)
 
 Next (meta):
 - [ ] Move inline todos into this list
-- [ ] If I document exactly how to repro the font size changing bug, I can defer fixing it and immediately do max-width 400
 
 Next (bugs):
 - [ ] On load: "ERROR Error: Uncaught (in promise): [object Undefined]"
-- [ ] Font size changing bug (And don't do max-width 400 until you figure that out)
+- [ ] Font size changing bug (only happens if text scaling is on)
 
 Next (refactor/cleanup):
 - [x] Prettier all .ts
