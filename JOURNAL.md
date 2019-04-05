@@ -103,6 +103,10 @@ deploys encourage me to make small tweaks!)
 - Max-width 400
 - Center calendar
 
+**NEXT:**
+
+- jk don't center
+
 
 ----
 
