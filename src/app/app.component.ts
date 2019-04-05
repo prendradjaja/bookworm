@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { BackendService, Row } from "./backend.service";
 import { ColorService } from "./color.service";
-import { SecretsService } from "./secrets.service";
+import { fromEvent, Observable, Observer } from "rxjs";
+
+const NEW_ENTRY_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform";
 
 @Component({
   selector: "app-root",
@@ -10,16 +13,14 @@ import { SecretsService } from "./secrets.service";
 })
 export class AppComponent implements OnInit {
   rows: Row[] = [];
-  newEntryUrl: string;
+  newEntryUrl = NEW_ENTRY_URL;
 
   exampleRowFull: Row;
 
   loading = true;
 
   fabColor: string = "gray";
-  fabUrl: string;
-
-  sheetUrl: string;
+  fabUrl: string = NEW_ENTRY_URL;
 
   currentDateFilter: Date;
 
@@ -28,17 +29,12 @@ export class AppComponent implements OnInit {
   allRows: Row[];
 
   constructor(
-    public backendService: BackendService,
-    private colorService: ColorService,
-    private secretsService: SecretsService
+    private backendService: BackendService,
+    private colorService: ColorService
   ) {}
 
   ngOnInit() {
-    this.newEntryUrl = `https://docs.google.com/forms/d/e/${this.secretsService.getFormId()}/viewform`;
-    this.fabUrl = this.newEntryUrl;
-    const sheetId = this.secretsService.getSheetId();
-    this.sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/edit`;
-
+    observableFun();
     const cached = this.backendService.getCached();
     if (cached) {
       this.onRowsReceived(cached);
@@ -50,14 +46,12 @@ export class AppComponent implements OnInit {
         this.onRowsReceived(allRows);
       },
       err => {
-        // if (!this.backendService.isOfflineOnly()) {
-        //   this.loading = false; // lol isn't this duplication what .finally is for?
-        //   const key = window.prompt("Set key (leave blank for no action)");
-        //   if (key) {
-        //     localStorage.setItem("bookworm/google-api-key", key);
-        //     location.reload();
-        //   }
-        // }
+        this.loading = false; // lol isn't this duplication what .finally is for?
+        const key = window.prompt("Set key (leave blank for no action)");
+        if (key) {
+          localStorage.setItem("bookworm/google-api-key", key);
+          location.reload();
+        }
       }
     );
   }
@@ -86,8 +80,7 @@ export class AppComponent implements OnInit {
   // todo rename
   private updateFabColor() {
     // When not filtering, use the first book
-    // When filtering by book, use the book you're filtering by (which, of course, will also be the first book)
-    // When filtering by date, use the most recent entry's book (which, again, will of course be the first book)
+    // When filtering, use the book you're filtering by (which, of course, will also be the first book)
     // TODO: If you try to prefill with an invalid book name, it just doesn't choose a book. Maybe prefill the "other" instead? How could I accomplish that?
 
     if (this.rows.length === 0 || !this.rows[0].book) {
@@ -99,9 +92,11 @@ export class AppComponent implements OnInit {
     // todo is there a real way of doing this?
     const urlEncodedBook = book.replace(/ /g, "+");
     this.fabColor = this.colorService.getColor(book);
-    const questionId = this.secretsService.getFormBookQuestionId();
-    let url = `?usp=pp_url&entry.${questionId}=__other_option__&entry.${questionId}.other_option_response=${urlEncodedBook}`;
-    this.fabUrl = this.newEntryUrl + url;
+    let url =
+      "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874=__other_option__&entry.688353874.other_option_response=" +
+      // let url = ('https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform?usp=pp_url&entry.688353874='
+      urlEncodedBook;
+    this.fabUrl = url;
   }
 
   public reset() {
@@ -166,3 +161,55 @@ function stos(s: string) {
 }
 
 // more stuff goes here
+/*
+
+
+
+
+
+
+
+
+
+
+*/
+
+function observableFun() {
+  thisIsAnObservable();
+  creatingMyOwnObservables();
+}
+
+function thisIsAnObservable() {
+  const link = document.querySelector("h1 a");
+
+  // so this is an observable. try clicking on "Bookworm" at the top!
+  const x: Observable<Event> = fromEvent(link, "click");
+  x.subscribe(() => console.log("clicked"));
+
+  // Q. why is it that this is allowed? i thought you needed a Subject in order to multicast to many Observers?
+  // or i guess the .subscribe is not an Observer?
+  x.subscribe(() => console.log("second click handler?"));
+}
+
+function creatingMyOwnObservables() {
+  // Q. Observer.next... why is it called Observer? seems like it's the thing being observed, not the thing being observed
+
+  // There's no difference between Observable.create and new Observable
+  // https://stackoverflow.com/questions/45912735/difference-between-new-observable-and-rx-observable-create
+  const y: Observable<number> = Observable.create(o => {
+    o.next(1);
+    o.next(2);
+  });
+  const z: Observable<number> = new Observable(subscriber => {
+    // Q. Why is this called a subscriber?
+    subscriber.next(3);
+    subscriber.next(4);
+  });
+
+  y.subscribe(e => {
+    console.log(e);
+  });
+  z.subscribe(e => {
+    console.log(e);
+  });
+}
