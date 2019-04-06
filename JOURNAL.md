@@ -106,6 +106,7 @@ deploys encourage me to make small tweaks!)
 **NEXT:**
 
 - jk don't center
+- (not user-visible) some cleanup (makeDay)
 
 
 ----
