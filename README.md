@@ -1,5 +1,9 @@
 # Bookworm
 
+## Installation
+
+See [INSTALL.md](./INSTALL.md)
+
 ## How to do a version bump
 
 - Update `JOURNAL.md` (No changelog for now)
@@ -10,11 +14,6 @@
 - `git tag vA.B.C`
 - `git push`
 - `git push --tags`
-
-## Installation
-
-- clone
-- npm install
 
 ## Development
 
