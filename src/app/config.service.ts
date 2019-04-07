@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 const config = {
   // This can be any day of the week (so you can use this to choose whether the
   // week starts on Sunday, Monday, ...)
-  calendarStartDate: new Date(2019, 0, 14)
+  calendarStartDate: "2019-01-14"
 };
 
 @Injectable({
@@ -13,7 +13,7 @@ const config = {
 export class ConfigService {
   constructor() {}
 
-  getCalendarStartDate(): Date {
+  getCalendarStartDate(): string {
     return config.calendarStartDate;
   }
 }

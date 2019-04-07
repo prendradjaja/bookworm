@@ -10,6 +10,8 @@ import {
 import { Row } from "../backend.service";
 import { ColorService } from "../color.service";
 import { ConfigService } from "../config.service";
+import * as moment from "moment";
+import * as _ from "lodash";
 
 @Component({
   selector: "calendar-view",
@@ -73,24 +75,25 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   }
 
   private computeWeeks() {
-    const startDate = this.configService.getCalendarStartDate();
+    const startDate = moment(this.configService.getCalendarStartDate());
+    const today = moment().startOf("day");
     let d = startDate;
     this.weeks = [];
-    while (d.getTime() < new Date().getTime()) {
+    while (d.isSameOrBefore(today)) {
       const week = [];
       for (let i = 0; i < 7; i++) {
         week.push(this.makeDay(d));
-        d = add(d, 1);
+        d = d.clone().add(1, "day");
       }
       this.weeks.push(week);
     }
   }
 
-  private makeDay(d: Date) {
+  private makeDay(d: moment.Moment) {
     // todo add typing to the day object
     const day = {
-      d: d.getDate(),
-      fullDate: d
+      d: d.date(),
+      fullDate: d.toDate() // todo Date -> moment
     } as any;
 
     // "today" = the current day we're iterating on
@@ -140,28 +143,20 @@ export class CalendarViewComponent implements OnInit, OnChanges {
   }
 }
 
-// todo real tz handling? moment?
-function dtos(d: Date) {
-  // return d.toISOString().split('T')[0];
-  const Y = d.getFullYear();
-  const M = d.getMonth() + 1;
-  const D = d.getDate();
-  return `${M}/${D}/${Y}`;
+// todo real tz handling?
+function dtos(d: moment.Moment) {
+  return d.format("M/D/Y");
 }
 
-function stod(s: string) {
-  const temp = new Date(s);
-  // todo discard time portion? how does this work with tzs?
-  return temp;
+// takes dates like 1/19/2019 22:49:46
+function stod(s: string): moment.Moment {
+  const dateWithoutTime = s.split(" ")[0];
+  return moment(dateWithoutTime);
 }
 
+// e.g. 1/19/2019 22:49:46 -> 1/19/2019
 function stos(s: string) {
   return dtos(stod(s));
-}
-
-function add(d: Date, days) {
-  const DAY_IN_MS = 1000 * 60 * 60 * 24;
-  return new Date(d.getTime() + DAY_IN_MS * days);
 }
 
 function oneItemSetToItem<T>(s: Set<T>): T {

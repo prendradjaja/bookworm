@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from "@angular/core";
 import { BackendService, Row } from "./backend.service";
 import { ColorService } from "./color.service";
 import { SecretsService } from "./secrets.service";
+import * as moment from "moment";
 
 @Component({
   selector: "app-root",
@@ -154,21 +155,18 @@ function rowComparator(a: Row, b: Row): number {
 }
 
 // todo dedupe these
-// todo real tz handling? moment?
-function dtos(d: Date) {
-  // return d.toISOString().split('T')[0];
-  const Y = d.getFullYear();
-  const M = d.getMonth() + 1;
-  const D = d.getDate();
-  return `${M}/${D}/${Y}`;
+// todo real tz handling?
+function dtos(d: moment.Moment) {
+  return d.format("M/D/Y");
 }
 
-function stod(s: string) {
-  const temp = new Date(s);
-  // todo discard time portion? how does this work with tzs?
-  return temp;
+// takes dates like 1/19/2019 22:49:46
+function stod(s: string): moment.Moment {
+  const dateWithoutTime = s.split(" ")[0];
+  return moment(dateWithoutTime);
 }
 
+// e.g. 1/19/2019 22:49:46 -> 1/19/2019
 function stos(s: string) {
   return dtos(stod(s));
 }
