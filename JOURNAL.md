@@ -131,7 +131,8 @@ Next (refactor/cleanup):
 - [ ] Rename event card
 - [ ] Remove app prefix from selectors
 - [ ] Move all z-indexes to one file
-- [ ] moment, lodash
+- [ ] moment (WIP branch: `moment`)
+- [ ] lodash
 
 Next (main):
 - [ ] Keyboard shortcut for new entry (also do for friendlog)
