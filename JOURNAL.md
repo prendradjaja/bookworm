@@ -131,6 +131,7 @@ Next (refactor/cleanup):
 - [ ] moment, lodash
 
 Next (main):
+- [ ] Keyboard shortcut for new entry (also do for friendlog)
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)
 - [ ] "When" support
 - [x] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
