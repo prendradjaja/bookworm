@@ -103,10 +103,13 @@ deploys encourage me to make small tweaks!)
 - Max-width 400
 - Center calendar
 
-**NEXT:**
+## 3/29-4/6
+
+**v0.1.20:**
 
 - jk don't center
 - (not user-visible) some cleanup (makeDay)
+- keyboard shortcut "c" for creating new event
 
 
 ----
