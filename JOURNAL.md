@@ -111,6 +111,18 @@ deploys encourage me to make small tweaks!)
 - (not user-visible) some cleanup (makeDay)
 - keyboard shortcut "c" for creating new event
 
+## 4/10
+
+**NEXT:**
+
+Bugfix: Long URL would cause FAB to be hidden...
+
+...since it's in the bottom right corner and the long URL causes the
+document(?) to become bigger. Strangely this is only an issue on mobile.
+
+In any case, overflow: hidden fixes it.
+
+
 
 ----
 
