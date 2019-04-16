@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { BackendService, Row } from "./backend.service";
 import { ColorService } from "./color.service";
-import { fromEvent, Observable, Observer } from "rxjs";
+import { fromEvent, Observable, Observer, of, zip } from "rxjs";
+import { map } from "rxjs/operators";
 
 const NEW_ENTRY_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSfX-UsUXwOIqffaAGltLCECpal_O4IMSe5tLBUzda2P7DKoDQ/viewform";
@@ -175,8 +176,9 @@ function stos(s: string) {
 */
 
 function observableFun() {
-  thisIsAnObservable();
-  creatingMyOwnObservables();
+  // thisIsAnObservable();
+  // creatingMyOwnObservables();
+  tryingZip();
 }
 
 function thisIsAnObservable() {
@@ -212,4 +214,11 @@ function creatingMyOwnObservables() {
   z.subscribe(e => {
     console.log(e);
   });
+}
+
+function tryingZip() {
+  const x = of("x");
+  const y = of("y");
+  const xx = x.pipe(map(e => e + e));
+  zip.apply(null, [xx, y]).subscribe(result => console.log(result));
 }
