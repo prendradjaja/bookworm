@@ -147,7 +147,9 @@ Next (refactor/cleanup):
 - [ ] lodash
 
 Next (main):
-- [ ] Keyboard shortcut for new entry (also do for friendlog)
+- [ ] When filtering (by date or book), reflect this by fading other entries in the calendar
+- [ ] Scrollable calendar
+- [x] Keyboard shortcut for new entry (also do for friendlog)
 - [ ] Calendar: Don't show future dates (like GitHub commit graph)
 - [ ] "When" support
 - [x] Colors: Manually choose all? Use a palette? (WIP branch: `color-palette`) Palette is probably harder, maybe not needed
