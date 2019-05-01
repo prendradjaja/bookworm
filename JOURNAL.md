@@ -147,6 +147,7 @@ Next (refactor/cleanup):
 - [ ] lodash
 
 Next (main):
+- [ ] Filter by todo
 - [ ] Change my URLs
 - [ ] "prevent text scaling css" was what i needed to google!! https://stackoverflow.com/questions/31917088/how-to-prevent-mobile-devices-to-scale-font-size
 - [ ] When filtering (by date or book), reflect this by fading other entries in the calendar
