@@ -78,9 +78,7 @@ export class AppComponent implements OnInit {
     this.reset();
     this.currentDateFilter = d;
     this.rows = this.rows.filter(x => stos(x.createdAt) === dtos(d));
-    console.log(this.fabColor);
     this.updateFabColor();
-    console.log(this.fabColor);
   }
 
   // todo rename

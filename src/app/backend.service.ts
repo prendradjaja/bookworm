@@ -144,7 +144,6 @@ class Parser {
         ret[book] = color;
       }
     });
-    console.log(ret);
     return ret;
   }
 
