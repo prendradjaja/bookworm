@@ -130,7 +130,6 @@ Next (meta):
 - [ ] Move inline todos into this list
 
 Next (bugs):
-- [ ] On load: "ERROR Error: Uncaught (in promise): [object Undefined]"
 - [ ] Font size changing bug (only happens if text scaling is on)
 
 Next (refactor/cleanup):
