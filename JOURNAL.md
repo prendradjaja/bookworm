@@ -111,7 +111,11 @@ deploys encourage me to make small tweaks!)
 - (not user-visible) some cleanup (makeDay)
 - keyboard shortcut "c" for creating new event
 
-## 4/10
+## 5/17
+
+Used Firebase hosting to host a pinned copy of this app, see PINNED.md
+
+## 4/10-
 
 **NEXT:**
 
